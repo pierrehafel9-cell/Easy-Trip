@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réserver mon kit — Easy Trip</title>
+  <meta name="description" content="Réservez en ligne votre kit Easy Trip. Choisissez vos dates, vos options, et payez en toute sécurité par carte bancaire." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="Easy Trip" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="nos-kits.html">Nos kits</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="comment-ca-marche.html">Comment ça marche</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html" class="btn btn-primary btn-sm active">Réserver</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <p class="eyebrow">Réservation</p>
+        <h1>Réservez votre kit en quelques clics</h1>
+        <p class="lead">Choisissez vos dates, vos options, et finalisez le paiement en toute sécurité.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form id="reservation-form" class="reservation-layout" novalidate>
+
+          <div class="reservation-main">
+
+            <div class="form-block">
+              <h2>1. Vos dates</h2>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="date-start">Date de départ</label>
+                  <input type="date" id="date-start" name="date-start" required />
+                </div>
+                <div class="form-field">
+                  <label for="date-end">Date de retour</label>
+                  <input type="date" id="date-end" name="date-end" required />
+                </div>
+              </div>
+              <p class="muted small" id="duration-hint">Sélectionnez vos dates pour voir le tarif.</p>
+            </div>
+
+            <div class="form-block">
+              <h2>2. Votre véhicule</h2>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="vehicle-brand">Marque</label>
+                  <input type="text" id="vehicle-brand" name="vehicle-brand" placeholder="Ex : Peugeot" />
+                </div>
+                <div class="form-field">
+                  <label for="vehicle-model">Modèle</label>
+                  <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Ex : 3008" />
+                </div>
+                <div class="form-field small-field">
+                  <label for="vehicle-year">Année</label>
+                  <input type="number" id="vehicle-year" name="vehicle-year" min="1990" max="2030" placeholder="2020" />
+                </div>
+              </div>
+              <p class="muted small">Le Kit M est conçu pour SUV et breaks. Nous vérifierons la compatibilité avant confirmation.</p>
+            </div>
+
+            <div class="form-block">
+              <h2>3. Options & accessoires</h2>
+              <p class="muted small">Cochez les options que vous souhaitez ajouter à votre location.</p>
+
+              <h3 class="cat-mini">Confort & couchage</h3>
+              <div class="options-grid">
+                <label class="option"><input type="checkbox" data-name="Pack literie" data-price="15"><span>Pack literie<small>15 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Oreillers" data-price="5"><span>Oreillers<small>5 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Bloqueur de coffre" data-price="10"><span>Bloqueur de coffre<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Moustiquaire" data-price="10"><span>Moustiquaire<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Cache-vitre soleil" data-price="10"><span>Cache-vitre soleil<small>10 €</small></span></label>
+              </div>
+
+              <h3 class="cat-mini">Cuisine & repas</h3>
+              <div class="options-grid">
+                <label class="option"><input type="checkbox" data-name="Cuisinière complète" data-price="20"><span>Cuisinière complète<small>20 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Glacière" data-price="15"><span>Glacière<small>15 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Machine à café 12V" data-price="10"><span>Machine à café 12V<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Bidon d'eau" data-price="5"><span>Bidon d'eau<small>5 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Repas lyophilisés (semaine)" data-price="60"><span>Repas lyophilisés (semaine)<small>60 €</small></span></label>
+              </div>
+
+              <h3 class="cat-mini">Hygiène</h3>
+              <div class="options-grid">
+                <label class="option"><input type="checkbox" data-name="Douche portable" data-price="10"><span>Douche portable<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Toilettes portables (taille L)" data-price="15"><span>Toilettes portables (taille L)<small>15 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Pack hygiène" data-price="8"><span>Pack hygiène<small>8 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Sacs poubelle" data-price="3"><span>Sacs poubelle<small>3 €</small></span></label>
+              </div>
+
+              <h3 class="cat-mini">Énergie & lumière</h3>
+              <div class="options-grid">
+                <label class="option"><input type="checkbox" data-name="Batterie externe" data-price="10"><span>Batterie externe<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Panneau solaire portable" data-price="15"><span>Panneau solaire portable<small>15 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Lampe rechargeable" data-price="5"><span>Lampe rechargeable<small>5 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Lampe frontale" data-price="5"><span>Lampe frontale<small>5 €</small></span></label>
+              </div>
+
+              <h3 class="cat-mini">Camping & extérieur</h3>
+              <div class="options-grid">
+                <label class="option"><input type="checkbox" data-name="Table + chaises de camping" data-price="10"><span>Table + chaises<small>10 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Attache vélo" data-price="15"><span>Attache vélo<small>15 €</small></span></label>
+                <label class="option"><input type="checkbox" data-name="Guide du camping" data-price="12"><span>Guide du camping<small>12 €</small></span></label>
+              </div>
+            </div>
+
+            <div class="form-block">
+              <h2>4. Vos coordonnées</h2>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="firstname">Prénom</label>
+                  <input type="text" id="firstname" name="firstname" required />
+                </div>
+                <div class="form-field">
+                  <label for="lastname">Nom</label>
+                  <input type="text" id="lastname" name="lastname" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-field">
+                  <label for="phone">Téléphone</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="message">Message (facultatif)</label>
+                <textarea id="message" name="message" rows="3" placeholder="Précisions sur votre voyage, votre véhicule, vos besoins…"></textarea>
+              </div>
+            </div>
+
+            <div class="form-block">
+              <h2>5. Conditions</h2>
+              <label class="checkbox-line">
+                <input type="checkbox" id="cgv" required />
+                <span>J'accepte les <a href="#">conditions générales de location</a> et la <a href="#">politique de confidentialité</a>.</span>
+              </label>
+              <label class="checkbox-line">
+                <input type="checkbox" id="caution" required />
+                <span>J'accepte qu'une caution soit débitée puis remboursée après le retour du kit.</span>
+              </label>
+            </div>
+
+          </div>
+
+          <aside class="reservation-summary">
+            <div class="summary-card">
+              <h2>Récapitulatif</h2>
+
+              <div class="summary-row">
+                <span>Kit M — SUV / Break</span>
+                <span id="summary-dates">— nuit(s)</span>
+              </div>
+              <div class="summary-row" id="summary-base-row">
+                <span>Location <small id="summary-rate"></small></span>
+                <span id="summary-base">0 €</span>
+              </div>
+
+              <div id="summary-options-block" hidden>
+                <div class="summary-divider"></div>
+                <p class="summary-label">Options</p>
+                <ul id="summary-options" class="summary-options"></ul>
+              </div>
+
+              <div class="summary-divider"></div>
+              <div class="summary-row total">
+                <span>Total location</span>
+                <span id="summary-total">0 €</span>
+              </div>
+
+              <div class="summary-divider"></div>
+              <div class="summary-row">
+                <span>Caution (à débiter)</span>
+                <span><strong>800 €</strong></span>
+              </div>
+              <p class="muted small">Débitée à la prise en charge du kit, remboursée intégralement après le retour si aucun dommage.</p>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn">
+                Payer et réserver
+              </button>
+              <p class="muted small center" style="margin-top:0.75rem;">Paiement sécurisé par <strong>Stripe</strong></p>
+
+              <div id="form-message" class="form-message" hidden></div>
+            </div>
+          </aside>
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><img src="assets/img/logo.svg" alt="Easy Trip" style="height:50px;" /></div>
+        <p class="muted">Les kits pour dormir où tu veux et quand tu veux.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="nos-kits.html">Nos kits</a></li>
+          <li><a href="accessoires.html">Accessoires</a></li>
+          <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+          <li><a href="reservation.html">Réservation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>contact@easy-trip.fr</li>
+          <li>+33 (0)X XX XX XX XX</li>
+          <li>Adresse à compléter</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suivez-nous</h4>
+        <ul class="footer-links">
+          <li><a href="#" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Easy Trip. Tous droits réservés.</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">CGV</a> · <a href="#">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/reservation.js"></script>
+</body>
+</html>

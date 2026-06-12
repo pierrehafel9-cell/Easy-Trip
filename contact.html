@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Easy Trip</title>
+  <meta name="description" content="Contactez Easy Trip pour toute question sur la location de kits, la compatibilité de votre véhicule ou vos accessoires." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="Easy Trip" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="nos-kits.html">Nos kits</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="comment-ca-marche.html">Comment ça marche</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="reservation.html" class="btn btn-primary btn-sm">Réserver</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Une question ? On est là.</h1>
+        <p class="lead">Compatibilité véhicule, disponibilités, devis pour un long voyage… n'hésitez pas à nous écrire, on répond rapidement.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+
+        <form class="form-block" id="contact-form" novalidate>
+          <h2>Écrivez-nous</h2>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="c-firstname">Prénom</label>
+              <input type="text" id="c-firstname" name="firstname" required />
+            </div>
+            <div class="form-field">
+              <label for="c-lastname">Nom</label>
+              <input type="text" id="c-lastname" name="lastname" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" name="email" required />
+            </div>
+            <div class="form-field">
+              <label for="c-phone">Téléphone (optionnel)</label>
+              <input type="tel" id="c-phone" name="phone" />
+            </div>
+          </div>
+
+          <div class="form-field" style="margin-bottom:1rem;">
+            <label for="c-subject">Sujet</label>
+            <select id="c-subject" name="subject" required>
+              <option value="">— Choisir un sujet —</option>
+              <option>Vérifier la compatibilité de mon véhicule</option>
+              <option>Question sur la location et les tarifs</option>
+              <option>Demande de devis (long voyage / groupe)</option>
+              <option>Demande sur les accessoires</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+
+          <div class="form-field" style="margin-bottom:1.25rem;">
+            <label for="c-message">Votre message</label>
+            <textarea id="c-message" name="message" rows="5" required placeholder="Détaillez votre demande, votre modèle de véhicule, vos dates envisagées…"></textarea>
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox" id="c-rgpd" required />
+            <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#">politique de confidentialité</a>.</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer mon message</button>
+          <div id="contact-message" class="form-message" hidden></div>
+        </form>
+
+        <aside class="contact-info">
+          <h3>Email</h3>
+          <p><a href="mailto:contact@easy-trip.fr">contact@easy-trip.fr</a></p>
+
+          <h3>Téléphone</h3>
+          <p><a href="tel:+33000000000">+33 (0)X XX XX XX XX</a><br/><small class="muted">Du lundi au samedi, 9h–19h</small></p>
+
+          <h3>Point de retrait</h3>
+          <p>Adresse à compléter<br/>Code postal, Ville<br/>France</p>
+
+          <h3>Réseaux sociaux</h3>
+          <div class="socials">
+            <a href="#" rel="noopener" aria-label="Instagram">IG</a>
+            <a href="#" rel="noopener" aria-label="Facebook">FB</a>
+          </div>
+
+          <h3 style="margin-top:1.5rem;">Délai de réponse</h3>
+          <p class="muted">Nous répondons généralement sous <strong>24 heures</strong> en semaine.</p>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><img src="assets/img/logo.svg" alt="Easy Trip" style="height:50px;" /></div>
+        <p class="muted">Les kits pour dormir où tu veux et quand tu veux.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="nos-kits.html">Nos kits</a></li>
+          <li><a href="accessoires.html">Accessoires</a></li>
+          <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+          <li><a href="reservation.html">Réservation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>contact@easy-trip.fr</li>
+          <li>+33 (0)X XX XX XX XX</li>
+          <li>Adresse à compléter</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suivez-nous</h4>
+        <ul class="footer-links">
+          <li><a href="#" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Easy Trip. Tous droits réservés.</p>
+      <p><a href="#">Mentions légales</a> · <a href="#">CGV</a> · <a href="#">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('contact-message');
+      if (!this.checkValidity()) {
+        msg.className = 'form-message error';
+        msg.textContent = 'Merci de compléter tous les champs obligatoires.';
+        msg.hidden = false;
+        this.reportValidity();
+        return;
+      }
+      // Pour activer l'envoi réel, branchez Formspree, EmailJS ou un endpoint custom.
+      // Exemple : fetch('https://formspree.io/f/XXXX', { method:'POST', body: new FormData(this) });
+      msg.className = 'form-message success';
+      msg.textContent = 'Merci ! Votre message a bien été envoyé. Nous vous répondons sous 24 heures.';
+      msg.hidden = false;
+      this.reset();
+    });
+  </script>
+</body>
+</html>
