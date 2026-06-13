@@ -8,6 +8,7 @@
   const prevBtn = gallery.querySelector('.gallery-arrow.prev');
   const nextBtn = gallery.querySelector('.gallery-arrow.next');
   const dotsContainer = gallery.querySelector('.gallery-dots');
+  const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
 
   // Crée les dots
   slides.forEach((_, i) => {
@@ -31,7 +32,10 @@
   function updateDots() {
     const i = currentIndex();
     dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    thumbs.forEach((t, idx) => t.classList.toggle('active', idx === i));
   }
+
+  thumbs.forEach((t, i) => t.addEventListener('click', () => goTo(i)));
 
   prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
   nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));

@@ -550,6 +550,27 @@ p { margin: 0 0 1em; }
 }
 .gallery-dot.active { background: var(--color-rust); transform: scale(1.3); }
 
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .5rem;
+  margin-top: .75rem;
+}
+.gallery-thumb {
+  padding: 0;
+  border: 2px solid transparent;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  transition: border-color .15s, opacity .15s;
+  opacity: .65;
+}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-thumb:hover { opacity: 1; }
+.gallery-thumb.active { border-color: var(--color-rust); opacity: 1; }
+
 /* ========== Bloc info "Fourni par" ========== */
 .supplier-card {
   display: flex;
