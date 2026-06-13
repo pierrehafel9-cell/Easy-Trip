@@ -7,7 +7,7 @@
     low: 35,   // Basse saison : sept → juin
     high: 45,  // Haute saison : juillet & août
   };
-  const CAUTION = 800;
+  const CAUTION = 1500;
   // Mois de haute saison (0 = janvier, 6 = juillet, 7 = août)
   const HIGH_MONTHS = new Set([6, 7]);
 
