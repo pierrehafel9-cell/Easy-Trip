@@ -54,9 +54,8 @@ Tous les `<div class="media-placeholder">` sont des emplacements à remplacer pa
 
 ### Contenu à compléter
 Recherchez et remplacez dans les fichiers HTML :
-- `+33 (0)X XX XX XX XX` → votre numéro
-- `contact@easy-trip.fr` → votre email
-- `Adresse à compléter` → adresse du point de retrait
+- Coordonnées intégrées : `contact.easytrip@gmail.com`, `+33 6 45 04 45 47`, point de retrait à **La Rochelle**
+- Adresse précise du point de retrait à compléter dans `contact.html` quand connue
 - Liens `href="#"` Instagram / Facebook → vos URLs
 
 ## Paiement Stripe
