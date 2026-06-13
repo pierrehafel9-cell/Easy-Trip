@@ -38,83 +38,68 @@
     </section>
 
     <section class="section">
-      <div class="container">
+      <div class="container split">
 
-        <!-- Carousel photos du kit -->
-        <div class="gallery" id="kit-gallery">
-          <button class="gallery-arrow prev" type="button" aria-label="Photo précédente">‹</button>
-          <div class="gallery-track">
-            <figure class="gallery-slide">
-              <img src="assets/img/kit-suv-mountain.jpg" alt="Kit déployé dans un SUV face aux montagnes" />
-              <figcaption>Kit déployé au bord d'un lac de montagne</figcaption>
-            </figure>
-            <figure class="gallery-slide">
-              <img src="assets/img/kit-couchage.jpg" alt="Vue du dessus du couchage et module cuisine" />
-              <figcaption>Couchage 190 × 130 cm + module cuisine</figcaption>
-            </figure>
-            <figure class="gallery-slide">
-              <img src="assets/img/kit-cuisine.jpg" alt="Détail des tiroirs cuisine coulissants" />
-              <figcaption>Tiroirs cuisine coulissants avec réchaud intégré</figcaption>
-            </figure>
-            <figure class="gallery-slide">
-              <img src="assets/img/hero.jpg" alt="Bivouac avec table et chaises" />
-              <figcaption>Table pliante et chaises incluses</figcaption>
-            </figure>
+        <!-- Carousel à gauche -->
+        <div class="split-media">
+          <div class="gallery" id="kit-gallery">
+            <button class="gallery-arrow prev" type="button" aria-label="Photo précédente">‹</button>
+            <div class="gallery-track">
+              <figure class="gallery-slide">
+                <img src="assets/img/kit-suv-mountain.jpg" alt="Kit déployé dans un SUV face aux montagnes" />
+                <figcaption>Au bord d'un lac de montagne</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="assets/img/kit-couchage.jpg" alt="Vue du dessus du couchage déplié" />
+                <figcaption>Couchage 190 × 130 cm</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="assets/img/kit-cuisine.jpg" alt="Détail des tiroirs cuisine coulissants" />
+                <figcaption>Tiroirs cuisine coulissants</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="assets/img/hero.jpg" alt="Bivouac avec table et chaises" />
+                <figcaption>Table et chaises installées</figcaption>
+              </figure>
+            </div>
+            <button class="gallery-arrow next" type="button" aria-label="Photo suivante">›</button>
+            <div class="gallery-dots"></div>
           </div>
-          <button class="gallery-arrow next" type="button" aria-label="Photo suivante">›</button>
-          <div class="gallery-dots"></div>
         </div>
 
-        <div class="split">
-          <div class="split-text">
-            <span class="tag">Disponible</span>
-            <h2>Kit M — SUV & Break</h2>
-            <p class="price-line">
-              <span class="price">35 €</span><span class="price-unit"> / nuit</span>
-              <span class="price-note">(basse saison) · 45 € / nuit en haute saison (juillet & août)</span>
-            </p>
-            <p>Le kit compact <strong>On The Road Box</strong> transforme votre SUV ou break en mini-van en 5 minutes, sans outils et sans modification du véhicule. Couchage 2 places, module cuisine coulissant, 85 litres de rangement et tout le matériel pour bivouaquer.</p>
+        <!-- Description à droite -->
+        <div class="split-text">
+          <span class="tag">Disponible</span>
+          <h2>Kit M — SUV & Break</h2>
+          <p class="price-line">
+            <span class="price">35 €</span><span class="price-unit"> / nuit</span>
+            <span class="price-note">(basse saison) · 45 € / nuit en haute saison (juillet & août)</span>
+          </p>
+          <p>Un kit modulaire qui transforme votre SUV ou break en mini-van en 5 minutes, sans outils. Couchage 2 places, module cuisine coulissant et tout le matériel pour bivouaquer.</p>
 
-            <div class="supplier-card">
-              <div>
-                <strong>Fabrication française.</strong> Kit conçu par <a href="https://ontheroadbox.fr/products/kit-compact" target="_blank" rel="noopener">On The Road Box</a>. Garantie 5 ans, structure en bois certifié, normes CE.
-              </div>
-            </div>
+          <h3>Inclus dans le kit</h3>
+          <ul class="check-list">
+            <li>Couchage 2 places (sommier + matelas)</li>
+            <li>2 tiroirs avec 85 L de rangement</li>
+            <li>Réchaud à gaz avec pare-vent</li>
+            <li>Table pliante + 2 chaises</li>
+            <li>Cache-vitres sur mesure</li>
+            <li>Bassine pliable + plan de travail</li>
+          </ul>
 
-            <h3>Inclus dans le kit</h3>
-            <ul class="check-list">
-              <li>Sommier 2 places (capacité jusqu'à 250 kg)</li>
-              <li>Matelas HR40 de 7 cm (housse déhoussable et lavable)</li>
-              <li>2 tiroirs avec 85 litres de rangement</li>
-              <li>Table pliante extérieure + 2 tablettes rabattables</li>
-              <li>Réchaud à gaz avec pare-vent</li>
-              <li>Bassine pliable et plateau de plan de travail</li>
-              <li>Cache-vitres sur mesure</li>
-              <li>4 sangles de fixation (norme EN 12195-2, 250 kg / sangle)</li>
-              <li>Cales de réhausse de 3 cm</li>
-            </ul>
+          <h3>Dimensions</h3>
+          <table class="spec-table">
+            <tbody>
+              <tr><th>Couchage</th><td>190 × 130 cm</td></tr>
+              <tr><th>Kit replié</th><td>93 × 65 × 23 cm</td></tr>
+              <tr><th>Montage</th><td>5 minutes, sans outils</td></tr>
+              <tr><th>Compatibilité</th><td>SUV, breaks, monospaces, vans</td></tr>
+            </tbody>
+          </table>
 
-            <div class="cta-row">
-              <a href="reservation.html" class="btn btn-primary">Vérifier les disponibilités</a>
-              <a href="#compat" class="btn btn-ghost">Mon véhicule est-il compatible ?</a>
-            </div>
-          </div>
-
-          <div class="split-text">
-            <h3>Caractéristiques techniques</h3>
-            <table class="spec-table">
-              <tbody>
-                <tr><th>Dimensions kit replié</th><td>93 × 65 × 23 cm</td></tr>
-                <tr><th>Dimensions couchage</th><td>190 × 130 cm</td></tr>
-                <tr><th>Hauteur avec matelas</th><td>30 cm</td></tr>
-                <tr><th>Poids total</th><td>56 kg (11 kg par caisson)</td></tr>
-                <tr><th>Charge utile lit</th><td>250 kg</td></tr>
-                <tr><th>Rangement</th><td>85 L (2 tiroirs)</td></tr>
-                <tr><th>Montage / démontage</th><td>5 minutes, sans outils</td></tr>
-                <tr><th>Matériau</th><td>Bois certifié</td></tr>
-                <tr><th>Compatibilité</th><td>SUV, breaks, monospaces et vans</td></tr>
-              </tbody>
-            </table>
+          <div class="cta-row">
+            <a href="reservation.html" class="btn btn-primary">Vérifier les disponibilités</a>
+            <a href="#compat" class="btn btn-ghost">Mon véhicule est-il compatible ?</a>
           </div>
         </div>
 
@@ -127,29 +112,103 @@
         <div class="section-head center">
           <p class="eyebrow">Compatibilité</p>
           <h2>Le kit rentre-t-il dans ma voiture ?</h2>
-          <p class="muted">3 critères suffisent pour vérifier en 2 minutes.</p>
+          <p class="muted">Sortez un mètre. 3 mesures à prendre dans le coffre de votre voiture.</p>
         </div>
 
-        <div class="compat-callout">
-          <h3>Vérifiez en 3 étapes</h3>
-          <ol class="check-list">
-            <li><strong>Profondeur du coffre (banquette rabattue)</strong> — il faut au minimum <strong>180 cm</strong> de profondeur pour le couchage. Mesurez du hayon jusqu'au dossier des sièges avant.</li>
-            <li><strong>Largeur entre passages de roues</strong> — il faut au minimum <strong>93 cm</strong> de largeur au sol du coffre (largeur du kit replié).</li>
-            <li><strong>Profondeur de coffre, banquette relevée</strong> — au moins <strong>80 cm</strong> pour pouvoir relever la banquette arrière même avec le kit installé.</li>
-          </ol>
-          <p style="margin-top:1rem;margin-bottom:0;"><strong>👉 Pas sûr ?</strong> Consultez la <a href="https://ontheroadbox.fr/pages/compatibilite-amenagements-voiture" target="_blank" rel="noopener">liste officielle de compatibilité On The Road Box</a> ou <a href="contact.html">contactez-nous</a> avec votre modèle, on vérifie ensemble.</p>
+        <!-- Schéma SVG des mesures -->
+        <div class="compat-schema" role="img" aria-label="Schéma d'un véhicule vu de profil avec les 3 mesures à prendre pour vérifier la compatibilité">
+          <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sol -->
+            <line x1="40" y1="290" x2="760" y2="290" stroke="#7a7e7b" stroke-width="2"/>
+            <!-- Carrosserie : silhouette d'un SUV vue de profil -->
+            <path d="M 90 250
+                     L 90 220
+                     L 140 170
+                     L 250 130
+                     L 470 130
+                     L 540 170
+                     L 700 220
+                     L 700 250"
+                  fill="#ece2d0" stroke="#1f2222" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- Hayon ouvert -->
+            <path d="M 700 220 L 720 110 L 745 105" fill="none" stroke="#1f2222" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="700" y1="220" x2="700" y2="250" stroke="#1f2222" stroke-width="2.5"/>
+            <!-- Vitres -->
+            <path d="M 150 175 L 250 138 L 350 138 L 350 175 Z" fill="#a4d5d5" stroke="#1f2222" stroke-width="1.5"/>
+            <path d="M 360 138 L 460 138 L 530 175 L 360 175 Z" fill="#a4d5d5" stroke="#1f2222" stroke-width="1.5"/>
+            <!-- Banquette rabattue (plancher du coffre) -->
+            <rect x="350" y="220" width="350" height="30" fill="#c4452b" opacity="0.25" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="525" y="240" font-family="Inter, sans-serif" font-size="13" fill="#a23820" font-weight="600" text-anchor="middle">banquette rabattue</text>
+            <!-- Roues -->
+            <circle cx="200" cy="285" r="28" fill="#1f2222"/>
+            <circle cx="200" cy="285" r="14" fill="#7a7e7b"/>
+            <circle cx="600" cy="285" r="28" fill="#1f2222"/>
+            <circle cx="600" cy="285" r="14" fill="#7a7e7b"/>
+
+            <!-- Mesure 1 : Longueur du couchage (banquette rabattue) -->
+            <line x1="350" y1="195" x2="700" y2="195" stroke="#c4452b" stroke-width="2.5"/>
+            <polygon points="350,195 360,190 360,200" fill="#c4452b"/>
+            <polygon points="700,195 690,190 690,200" fill="#c4452b"/>
+            <line x1="350" y1="218" x2="350" y2="190" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="700" y1="218" x2="700" y2="190" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <rect x="465" y="180" width="120" height="22" fill="#c4452b" rx="3"/>
+            <text x="525" y="196" font-family="Inter, sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">≥ 180 cm</text>
+
+            <!-- Mesure 2 : Hauteur disponible -->
+            <line x1="730" y1="135" x2="730" y2="220" stroke="#2f8a8a" stroke-width="2.5"/>
+            <polygon points="730,135 725,145 735,145" fill="#2f8a8a"/>
+            <polygon points="730,220 725,210 735,210" fill="#2f8a8a"/>
+            <rect x="730" y="170" width="55" height="22" fill="#2f8a8a" rx="3"/>
+            <text x="757" y="186" font-family="Inter, sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">≥ 30 cm</text>
+
+            <!-- Mesure 3 : Profondeur banquette relevée -->
+            <line x1="540" y1="320" x2="700" y2="320" stroke="#e8b820" stroke-width="2.5"/>
+            <polygon points="540,320 550,315 550,325" fill="#e8b820"/>
+            <polygon points="700,320 690,315 690,325" fill="#e8b820"/>
+            <line x1="540" y1="290" x2="540" y2="325" stroke="#e8b820" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="700" y1="290" x2="700" y2="325" stroke="#e8b820" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <rect x="585" y="335" width="70" height="22" fill="#e8b820" rx="3"/>
+            <text x="620" y="351" font-family="Inter, sans-serif" font-size="13" fill="#1f2222" font-weight="700" text-anchor="middle">≥ 80 cm</text>
+
+            <!-- Légendes -->
+            <circle cx="50" cy="35" r="9" fill="#c4452b"/>
+            <text x="65" y="40" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Longueur du couchage</text>
+            <circle cx="50" cy="62" r="9" fill="#2f8a8a"/>
+            <text x="65" y="67" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Hauteur intérieure du coffre</text>
+            <circle cx="50" cy="89" r="9" fill="#e8b820"/>
+            <text x="65" y="94" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Profondeur banquette relevée</text>
+          </svg>
         </div>
 
-        <h3 style="margin-top:2rem;">Quelques exemples de véhicules compatibles</h3>
-        <p class="muted">Liste non exhaustive — la majorité des SUV et breaks modernes sont compatibles :</p>
+        <div class="grid grid-3" style="margin-top:2rem;">
+          <div class="card compat-step">
+            <div class="step-color" style="background:#c4452b;"></div>
+            <h3>1 · Longueur du couchage</h3>
+            <p>Banquette arrière rabattue, mesurez du hayon jusqu'au dossier des sièges avant. Il vous faut <strong>au moins 180 cm</strong>.</p>
+          </div>
+          <div class="card compat-step">
+            <div class="step-color" style="background:#2f8a8a;"></div>
+            <h3>2 · Hauteur intérieure</h3>
+            <p>Du plancher du coffre au plafond. Il faut <strong>au moins 30 cm</strong> pour la hauteur du kit + matelas.</p>
+          </div>
+          <div class="card compat-step">
+            <div class="step-color" style="background:#e8b820;"></div>
+            <h3>3 · Profondeur banquette relevée</h3>
+            <p>Du hayon jusqu'à la banquette en position normale. Il faut <strong>au moins 80 cm</strong> pour stocker le kit replié.</p>
+          </div>
+        </div>
+
+        <p class="center" style="margin-top:1.5rem;">
+          <a href="contact.html" class="btn btn-primary">Pas sûr ? On vérifie ensemble</a>
+        </p>
+
+        <h3 style="margin-top:3rem;">Exemples de véhicules compatibles</h3>
+        <p class="muted">Liste non exhaustive — la majorité des SUV et breaks modernes conviennent :</p>
         <div class="grid grid-3">
-          <div class="card"><strong>SUV</strong><p class="muted small">Dacia Duster · Peugeot 3008/5008 · Renault Kadjar/Koleos · Citroën C5 Aircross · Hyundai Tucson · Kia Sportage · Volkswagen Tiguan…</p></div>
-          <div class="card"><strong>Breaks</strong><p class="muted small">Peugeot 308 SW · Renault Mégane Estate · Volkswagen Passat Variant · Audi A4/A6 Avant · Skoda Octavia Combi · Volvo V60/V90…</p></div>
+          <div class="card"><strong>SUV</strong><p class="muted small">Dacia Duster · Peugeot 3008 / 5008 · Renault Kadjar / Koleos · Citroën C5 Aircross · Hyundai Tucson · Kia Sportage · Volkswagen Tiguan…</p></div>
+          <div class="card"><strong>Breaks</strong><p class="muted small">Peugeot 308 SW · Renault Mégane Estate · Volkswagen Passat Variant · Audi A4 / A6 Avant · Skoda Octavia Combi · Volvo V60 / V90…</p></div>
           <div class="card"><strong>Monospaces & vans</strong><p class="muted small">Citroën Berlingo · Peugeot Rifter · Renault Kangoo · Volkswagen Caddy · Ford Tourneo Connect…</p></div>
         </div>
-        <p class="center" style="margin-top:1.5rem;">
-          <a href="https://ontheroadbox.fr/pages/compatibilite-amenagements-voiture" target="_blank" rel="noopener" class="btn btn-ghost">Voir la liste complète de compatibilité</a>
-        </p>
       </div>
     </section>
 
