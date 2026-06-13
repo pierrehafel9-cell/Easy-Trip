@@ -807,6 +807,32 @@ p { margin: 0 0 1em; }
 .faq details p { margin: .8rem 0 .2rem; color: var(--color-ink-soft); }
 .narrow { max-width: 820px; margin: 0 auto; }
 
+/* ========== Pages légales ========== */
+.legal h2 {
+  font-size: 1.35rem;
+  margin: 2rem 0 .75rem;
+  padding-bottom: .4rem;
+  border-bottom: 2px solid var(--color-line);
+}
+.legal h2:first-child { margin-top: 0; }
+.legal h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 .5rem;
+  color: var(--color-ink-soft);
+}
+.legal p, .legal ul, .legal ol { font-size: .96rem; line-height: 1.7; }
+.legal ul, .legal ol { padding-left: 1.5rem; }
+.legal li { margin-bottom: .35rem; }
+.legal em {
+  background: #fff7e6;
+  color: #6b5418;
+  padding: .1rem .35rem;
+  border-radius: 3px;
+  font-style: normal;
+  font-size: .88em;
+  border-left: 3px solid var(--color-yellow);
+}
+
 /* ========== Reservation ========== */
 .reservation-layout {
   display: grid;

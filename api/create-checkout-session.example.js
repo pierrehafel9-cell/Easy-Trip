@@ -57,7 +57,7 @@ exports.handler = async (event) => {
         firstname: customer?.firstname || '',
         lastname: customer?.lastname || '',
         phone: customer?.phone || '',
-        caution_eur: String(pricing.caution || 1500),
+        caution_eur: String(pricing.caution || 1200),
       },
       success_url: `${process.env.SITE_URL}/reservation-confirmee.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.SITE_URL}/reservation.html`,
