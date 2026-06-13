@@ -130,86 +130,45 @@
           <p class="muted">Sortez un mètre. 3 mesures à prendre dans le coffre de votre voiture.</p>
         </div>
 
-        <!-- Schéma SVG des mesures -->
-        <div class="compat-schema" role="img" aria-label="Schéma d'un véhicule vu de profil avec les 3 mesures à prendre pour vérifier la compatibilité">
-          <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg">
-            <!-- Sol -->
-            <line x1="40" y1="290" x2="760" y2="290" stroke="#7a7e7b" stroke-width="2"/>
-            <!-- Carrosserie : silhouette d'un SUV vue de profil -->
-            <path d="M 90 250
-                     L 90 220
-                     L 140 170
-                     L 250 130
-                     L 470 130
-                     L 540 170
-                     L 700 220
-                     L 700 250"
-                  fill="#ece2d0" stroke="#1f2222" stroke-width="2.5" stroke-linejoin="round"/>
-            <!-- Hayon ouvert -->
-            <path d="M 700 220 L 720 110 L 745 105" fill="none" stroke="#1f2222" stroke-width="2.5" stroke-linejoin="round"/>
-            <line x1="700" y1="220" x2="700" y2="250" stroke="#1f2222" stroke-width="2.5"/>
-            <!-- Vitres -->
-            <path d="M 150 175 L 250 138 L 350 138 L 350 175 Z" fill="#a4d5d5" stroke="#1f2222" stroke-width="1.5"/>
-            <path d="M 360 138 L 460 138 L 530 175 L 360 175 Z" fill="#a4d5d5" stroke="#1f2222" stroke-width="1.5"/>
-            <!-- Banquette rabattue (plancher du coffre) -->
-            <rect x="350" y="220" width="350" height="30" fill="#c4452b" opacity="0.25" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="4 3"/>
-            <text x="525" y="240" font-family="Inter, sans-serif" font-size="13" fill="#a23820" font-weight="600" text-anchor="middle">banquette rabattue</text>
-            <!-- Roues -->
-            <circle cx="200" cy="285" r="28" fill="#1f2222"/>
-            <circle cx="200" cy="285" r="14" fill="#7a7e7b"/>
-            <circle cx="600" cy="285" r="28" fill="#1f2222"/>
-            <circle cx="600" cy="285" r="14" fill="#7a7e7b"/>
-
-            <!-- Mesure 1 : Longueur du couchage (banquette rabattue) -->
-            <line x1="350" y1="195" x2="700" y2="195" stroke="#c4452b" stroke-width="2.5"/>
-            <polygon points="350,195 360,190 360,200" fill="#c4452b"/>
-            <polygon points="700,195 690,190 690,200" fill="#c4452b"/>
-            <line x1="350" y1="218" x2="350" y2="190" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <line x1="700" y1="218" x2="700" y2="190" stroke="#c4452b" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <rect x="465" y="180" width="120" height="22" fill="#c4452b" rx="3"/>
-            <text x="525" y="196" font-family="Inter, sans-serif" font-size="14" fill="#fff" font-weight="700" text-anchor="middle">≥ 180 cm</text>
-
-            <!-- Mesure 2 : Hauteur disponible -->
-            <line x1="730" y1="135" x2="730" y2="220" stroke="#2f8a8a" stroke-width="2.5"/>
-            <polygon points="730,135 725,145 735,145" fill="#2f8a8a"/>
-            <polygon points="730,220 725,210 735,210" fill="#2f8a8a"/>
-            <rect x="730" y="170" width="55" height="22" fill="#2f8a8a" rx="3"/>
-            <text x="757" y="186" font-family="Inter, sans-serif" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">≥ 30 cm</text>
-
-            <!-- Mesure 3 : Profondeur banquette relevée -->
-            <line x1="540" y1="320" x2="700" y2="320" stroke="#e8b820" stroke-width="2.5"/>
-            <polygon points="540,320 550,315 550,325" fill="#e8b820"/>
-            <polygon points="700,320 690,315 690,325" fill="#e8b820"/>
-            <line x1="540" y1="290" x2="540" y2="325" stroke="#e8b820" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <line x1="700" y1="290" x2="700" y2="325" stroke="#e8b820" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <rect x="585" y="335" width="70" height="22" fill="#e8b820" rx="3"/>
-            <text x="620" y="351" font-family="Inter, sans-serif" font-size="13" fill="#1f2222" font-weight="700" text-anchor="middle">≥ 80 cm</text>
-
-            <!-- Légendes -->
-            <circle cx="50" cy="35" r="9" fill="#c4452b"/>
-            <text x="65" y="40" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Longueur du couchage</text>
-            <circle cx="50" cy="62" r="9" fill="#2f8a8a"/>
-            <text x="65" y="67" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Hauteur intérieure du coffre</text>
-            <circle cx="50" cy="89" r="9" fill="#e8b820"/>
-            <text x="65" y="94" font-family="Inter, sans-serif" font-size="14" fill="#1f2222" font-weight="600">Profondeur banquette relevée</text>
-          </svg>
-        </div>
+        <!-- Schéma : photo annotée -->
+        <figure class="compat-photo">
+          <img src="assets/img/kit-couchage.jpg" alt="Vue du coffre d'un SUV avec le kit installé" />
+          <!-- Repère 1 : longueur du couchage -->
+          <span class="mes mes-1">
+            <span class="dot" style="background:#c4452b">1</span>
+            <span class="label">Longueur ≥ 180 cm</span>
+          </span>
+          <!-- Repère 2 : largeur -->
+          <span class="mes mes-2">
+            <span class="dot" style="background:#2f8a8a">2</span>
+            <span class="label">Largeur ≥ 100 cm</span>
+          </span>
+          <!-- Repère 3 : hauteur -->
+          <span class="mes mes-3">
+            <span class="dot" style="background:#e8b820;color:#1f2222">3</span>
+            <span class="label">Hauteur ≥ 70 cm</span>
+          </span>
+          <figcaption>Les 3 mesures à prendre dans le coffre de votre voiture, banquette arrière rabattue.</figcaption>
+        </figure>
 
         <div class="grid grid-3" style="margin-top:2rem;">
           <div class="card compat-step">
             <div class="step-color" style="background:#c4452b;"></div>
-            <h3>1 · Longueur du couchage</h3>
-            <p>Banquette arrière rabattue, mesurez du hayon jusqu'au dossier des sièges avant. Il vous faut <strong>au moins 180 cm</strong>.</p>
+            <div class="step-badge" style="background:#c4452b;">1</div>
+            <h3>Longueur du couchage</h3>
+            <p>Banquette arrière rabattue, mesurez du <strong>hayon jusqu'au dossier des sièges avant</strong>. Il vous faut <strong>au moins 180 cm</strong>.</p>
           </div>
           <div class="card compat-step">
             <div class="step-color" style="background:#2f8a8a;"></div>
-            <h3>2 · Hauteur intérieure</h3>
-            <p>Du plancher du coffre au plafond. Il faut <strong>au moins 30 cm</strong> pour la hauteur du kit + matelas.</p>
+            <div class="step-badge" style="background:#2f8a8a;">2</div>
+            <h3>Largeur du coffre</h3>
+            <p>Mesurez la <strong>largeur au sol entre les passages de roues</strong>. Il faut <strong>au moins 100 cm</strong> pour installer le kit.</p>
           </div>
           <div class="card compat-step">
             <div class="step-color" style="background:#e8b820;"></div>
-            <h3>3 · Profondeur banquette relevée</h3>
-            <p>Du hayon jusqu'à la banquette en position normale. Il faut <strong>au moins 80 cm</strong> pour stocker le kit replié.</p>
+            <div class="step-badge" style="background:#e8b820;color:#1f2222;">3</div>
+            <h3>Hauteur intérieure</h3>
+            <p>Mesurez du <strong>plancher du coffre au plafond</strong>. Il faut <strong>au moins 70 cm</strong> pour pouvoir s'asseoir au-dessus du couchage.</p>
           </div>
         </div>
 
@@ -269,7 +228,7 @@
       <div>
         <h4>Contact</h4>
         <ul class="footer-links">
-          <li>contact.easytrip@gmail.com</li>
+          <li>easytrip.kit@gmail.com</li>
           <li>+33 6 45 04 45 47</li>
           <li>La Rochelle, France</li>
         </ul>
@@ -277,7 +236,7 @@
       <div>
         <h4>Suivez-nous</h4>
         <ul class="footer-links">
-          <li><a href="#" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.instagram.com/easytrip_france/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="#" rel="noopener">Facebook</a></li>
         </ul>
       </div>
