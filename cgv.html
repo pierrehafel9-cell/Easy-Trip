@@ -70,14 +70,19 @@
         <p>Le paiement de la location s'effectue intégralement <strong>en ligne au moment de la réservation</strong>, par carte bancaire via <strong>Stripe</strong> (paiement sécurisé conforme à la norme PCI-DSS). La réservation n'est définitivement confirmée qu'après réception du paiement.</p>
 
         <h2>Article 5 — Caution</h2>
-        <p>Une caution d'un montant maximum de <strong>1 200 € (mille deux cents euros)</strong> est exigée. Modalités :</p>
+        <p>Une caution de <strong>1 200 € (mille deux cents euros)</strong> est exigée pour couvrir les éventuels dégâts ou pertes. Cette caution fonctionne en deux temps :</p>
+        <ol>
+          <li><strong>À la réservation</strong> : la carte bancaire du Locataire est mémorisée de façon sécurisée via Stripe (mécanisme « SetupIntent », conforme à la norme PCI-DSS). Aucun montant n'est débité ni bloqué à cet instant.</li>
+          <li><strong>Le jour du début de la location</strong> : un montant de 1 200 € est bloqué sur la carte du Locataire (mécanisme de pré-autorisation Stripe). Le Locataire est informé que ce montant apparaîtra comme indisponible sur son compte bancaire pendant toute la durée de la location, sans pour autant être débité. Si la carte du Locataire ne permet pas ce blocage, la remise du kit pourra être refusée et la location annulée sans remboursement.</li>
+        </ol>
+        <p><strong>Au retour du kit :</strong></p>
         <ul>
-          <li>Lors de la réservation, le Locataire autorise Easy Trip à mémoriser sa carte bancaire de façon sécurisée via Stripe (mécanisme « SetupIntent »).</li>
-          <li><strong>Aucun montant n'est bloqué ni débité sur le compte du Locataire</strong> au moment de la réservation.</li>
-          <li>En cas de dégât constaté lors du retour du kit, ou de perte/vol d'éléments, Easy Trip se réserve le droit de débiter la carte mémorisée, à hauteur du préjudice constaté, dans la limite de 1 200 €.</li>
-          <li>Le débit est notifié au Locataire par email, accompagné des photos des dégâts et d'un devis de réparation ou de remplacement.</li>
-          <li>Si le kit est rendu en bon état général, aucun débit n'est effectué.</li>
+          <li><strong>Kit rendu en bon état</strong> : le blocage de 1 200 € est levé sous quelques jours (délai variable selon la banque du Locataire). Aucun débit n'est effectué.</li>
+          <li><strong>Dégâts constatés ≤ 1 200 €</strong> : Easy Trip capture (débite) sur la pré-autorisation le montant exact des dégâts. Le solde est libéré.</li>
+          <li><strong>Dégâts constatés &gt; 1 200 €</strong> : Easy Trip capture les 1 200 € de la pré-autorisation et débite le surplus via la carte mémorisée à la réservation. Le Locataire reste redevable de tout préjudice excédant les sommes prélevées.</li>
         </ul>
+        <p>Tout débit est notifié au Locataire par email, accompagné des photos des dégâts et d'un devis de réparation ou de remplacement.</p>
+        <p><strong>Locations de plus de 7 nuits :</strong> en raison de la limite technique de Stripe (la pré-autorisation expire au bout de 7 jours), la caution prend la forme exclusive d'une carte mémorisée pour les locations supérieures à 7 nuits. Aucun montant n'est bloqué, mais le débit reste possible en cas de dégât, dans les mêmes conditions que ci-dessus.</p>
 
         <h2>Article 6 — Réservation et durée</h2>
         <p>La durée minimale de location est de <strong>2 nuits</strong>. La durée maximale est de <strong>30 nuits</strong> par réservation. Au-delà, contactez-nous pour un devis personnalisé.</p>
