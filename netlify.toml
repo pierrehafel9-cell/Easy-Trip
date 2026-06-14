@@ -5,7 +5,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["stripe"]
+  external_node_modules = ["stripe", "resend"]
 
 # Redirection de /api/* vers les fonctions Netlify (compat avec reservation.js)
 [[redirects]]
