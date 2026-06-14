@@ -23,7 +23,7 @@ exports.handler = async (event) => {
 
   try {
     const payload = JSON.parse(event.body || '{}');
-    const { dates = {}, customer = {}, vehicle = {}, options = [], pricing = {} } = payload;
+    const { dates = {}, customer = {}, vehicle = {}, options = [], pricing = {}, persons = 1 } = payload;
 
     // Validation basique
     if (!dates.start || !dates.end || !customer.email) {
@@ -66,11 +66,12 @@ exports.handler = async (event) => {
       nights: String(dates.nights || 0),
       low_nights: String(dates.low || 0),
       high_nights: String(dates.high || 0),
+      persons: String(persons),
       customer_firstname: customer.firstname || '',
       customer_lastname: customer.lastname || '',
       customer_phone: customer.phone || '',
       vehicle: `${vehicle.brand || ''} ${vehicle.model || ''} ${vehicle.year || ''}`.trim(),
-      options: options.map((o) => o.name).join(' | ').slice(0, 490),
+      options: options.map((o) => `${o.name} (${Math.round(o.price)}€)`).join(' | ').slice(0, 490),
       caution_eur: String(CAUTION_EUR),
       customer_message: (customer.message || '').slice(0, 490),
     };

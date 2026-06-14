@@ -1,17 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" role="img" aria-label="Easy Trip — Since 2025">
-  <defs>
-    <style>
-      .easy-trip-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; fill: #ece2d0; }
-      .easy-trip-tag { font-family: 'Inter', Arial, sans-serif; font-weight: 600; letter-spacing: 8px; fill: #b8ae9a; }
-    </style>
-  </defs>
-  <text class="easy-trip-text" x="30" y="120" font-size="118" letter-spacing="-2">Easy</text>
-  <text class="easy-trip-tag" x="280" y="98" font-size="18">SINCE 2025</text>
-  <text class="easy-trip-text" x="260" y="200" font-size="118" letter-spacing="-2">Trip</text>
-  <g>
-    <rect x="30" y="138" width="220" height="11" fill="#2f8a8a"/>
-    <rect x="30" y="153" width="220" height="11" fill="#a63a1f"/>
-    <rect x="30" y="168" width="220" height="11" fill="#c4452b"/>
-    <rect x="30" y="183" width="220" height="11" fill="#e8b820"/>
-  </g>
+  <text font-family="Georgia, 'Playfair Display', serif" font-weight="700" fill="#ece2d0" x="30" y="120" font-size="118" letter-spacing="-2">Easy</text>
+  <text font-family="Inter, Arial, sans-serif" font-weight="600" letter-spacing="8" fill="#b8ae9a" x="285" y="98" font-size="18">SINCE 2025</text>
+  <text font-family="Georgia, 'Playfair Display', serif" font-weight="700" fill="#ece2d0" x="265" y="200" font-size="118" letter-spacing="-2">Trip</text>
+  <rect x="30" y="138" width="220" height="11" fill="#2f8a8a"/>
+  <rect x="30" y="153" width="220" height="11" fill="#a63a1f"/>
+  <rect x="30" y="168" width="220" height="11" fill="#c4452b"/>
+  <rect x="30" y="183" width="220" height="11" fill="#e8b820"/>
 </svg>
