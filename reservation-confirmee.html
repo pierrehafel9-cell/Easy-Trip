@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réservation confirmée — Easy Trip</title>
+  <meta name="description" content="Votre réservation Easy Trip est confirmée. Merci !" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Easy Trip" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="nos-kits.html">Nos kits</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="comment-ca-marche.html">Comment ça marche</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html" class="btn btn-primary btn-sm">Réserver</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container narrow">
+
+        <div class="confirm-card">
+          <div class="confirm-icon">✓</div>
+          <h1>Merci, votre réservation est confirmée !</h1>
+          <p class="lead">Un email récapitulatif vient de vous être envoyé.</p>
+
+          <div id="confirm-details" class="confirm-details" hidden>
+            <h2>Récapitulatif</h2>
+            <dl id="confirm-list"></dl>
+          </div>
+
+          <div id="confirm-loading" class="muted small">Chargement des détails…</div>
+
+          <h2 style="margin-top:2.5rem;">Et maintenant ?</h2>
+          <ol class="next-steps">
+            <li>📧 <strong>Vous recevez un email de confirmation</strong> de Stripe (reçu de paiement) et d'Easy Trip (récapitulatif + adresse précise du point de retrait à La Rochelle).</li>
+            <li>🚗 <strong>Pensez à vérifier la compatibilité</strong> de votre véhicule si ce n'est pas déjà fait — on peut aussi le faire ensemble par téléphone.</li>
+            <li>🔒 <strong>Le jour du départ</strong>, lors de la prise en charge du kit, nous bloquerons 1 200 € sur votre carte à titre de caution (non débitée). Le blocage est levé au retour du kit en bon état.</li>
+            <li>🏕️ <strong>Bon voyage !</strong></li>
+          </ol>
+
+          <div class="center" style="margin-top:2rem;">
+            <a href="index.html" class="btn btn-ghost">Retour à l'accueil</a>
+            <a href="contact.html" class="btn btn-primary">Une question ? Contactez-nous</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><img src="assets/img/logo.png" alt="Easy Trip" style="height:50px;" /></div>
+        <p class="muted">Les kits pour dormir où tu veux et quand tu veux.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="nos-kits.html">Nos kits</a></li>
+          <li><a href="accessoires.html">Accessoires</a></li>
+          <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+          <li><a href="reservation.html">Réservation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>easytrip.kit@gmail.com</li>
+          <li>+33 6 45 04 45 47</li>
+          <li>La Rochelle, France</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suivez-nous</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/easytrip_france/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Easy Trip. Tous droits réservés.</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get('session_id');
+      const loading = document.getElementById('confirm-loading');
+      const details = document.getElementById('confirm-details');
+      const list = document.getElementById('confirm-list');
+
+      if (!sessionId) {
+        loading.textContent = '';
+        return;
+      }
+      try {
+        const r = await fetch('/.netlify/functions/get-session?session_id=' + encodeURIComponent(sessionId));
+        if (!r.ok) throw new Error('Détails indisponibles');
+        const data = await r.json();
+        const m = data.metadata || {};
+        const rows = [
+          ['Kit', m.kit],
+          ['Dates', `${formatDate(m.dates_start)} → ${formatDate(m.dates_end)} (${m.nights} nuit${m.nights > 1 ? 's' : ''})`],
+          ['Véhicule', m.vehicle],
+          ['Options', m.options || '—'],
+          ['Montant payé', formatAmount(data.amount, data.currency)],
+          ['Email', data.email],
+          ['Caution (à bloquer le jour J)', '1 200 €'],
+        ].filter(([, v]) => v);
+        list.innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHtml(v)}</dd>`).join('');
+        loading.hidden = true;
+        details.hidden = false;
+      } catch (e) {
+        loading.textContent = 'Impossible de charger les détails — votre paiement a bien été enregistré, vérifiez votre email.';
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        const [y, m, d] = iso.split('-');
+        return `${d}/${m}/${y}`;
+      }
+      function formatAmount(cents, currency) {
+        if (cents == null) return '—';
+        return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: (currency || 'eur').toUpperCase() }).format(cents / 100);
+      }
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "easy-trip",
+  "version": "1.0.0",
+  "description": "Easy Trip — site web et fonctions Netlify pour la location de kits d'aménagement",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stripe": "^17.5.0"
+  }
+}

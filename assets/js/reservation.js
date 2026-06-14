@@ -137,37 +137,30 @@
     submitBtn.textContent = 'Préparation du paiement…';
 
     try {
-      // === Intégration Stripe Checkout ===
-      // Pour activer le paiement, déployez une fonction backend (Netlify Function,
-      // Vercel Function, Cloudflare Worker…) à l'URL ci-dessous. Elle doit créer
-      // une session Stripe Checkout et renvoyer { url: "https://checkout.stripe.com/..." }.
-      // Modèle de fonction fourni dans `api/create-checkout-session.example.js`.
-      const ENDPOINT = '/api/create-checkout-session';
-
-      const resp = await fetch(ENDPOINT, {
+      // Appelle la fonction Netlify qui crée la session Stripe Checkout
+      const resp = await fetch('/.netlify/functions/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      if (!resp.ok) throw new Error('Backend indisponible');
-      const data = await resp.json();
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        throw new Error(data.error || `Erreur ${resp.status}`);
+      }
       if (data.url) {
+        // Redirige vers Stripe Checkout
         window.location.href = data.url;
         return;
       }
       throw new Error('Réponse Stripe invalide');
     } catch (err) {
-      // Fallback : on enregistre la demande localement et on affiche un message.
-      console.warn('Stripe non disponible, fallback envoi par mail :', err);
+      console.error('Erreur Stripe Checkout:', err);
       showMessage(
-        'Votre demande a été enregistrée. Le paiement en ligne sera activé prochainement. ' +
-        'Nous vous recontactons sous 24h pour finaliser votre réservation.',
-        'success'
+        'Une erreur est survenue lors de la préparation du paiement : ' + err.message +
+        '. Merci de réessayer ou de nous contacter à easytrip.kit@gmail.com.',
+        'error'
       );
-      // En production, vous pouvez aussi déclencher un POST vers un service
-      // type Formspree / EmailJS pour recevoir le résumé par email :
-      //   fetch('https://formspree.io/f/XXXX', { method:'POST', body: JSON.stringify(payload), headers:{'Content-Type':'application/json'} });
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Payer et réserver';
