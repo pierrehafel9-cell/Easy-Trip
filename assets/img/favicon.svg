@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="20" fill="#1f2222"/>
-  <text x="50" y="48" font-family="Georgia, 'Playfair Display', serif" font-weight="700" font-size="44" fill="#ece2d0" text-anchor="middle" letter-spacing="-3">ET</text>
-  <rect x="18" y="62" width="64" height="6" fill="#2f8a8a"/>
-  <rect x="18" y="70" width="64" height="6" fill="#a63a1f"/>
-  <rect x="18" y="78" width="64" height="6" fill="#c4452b"/>
-  <rect x="18" y="86" width="64" height="6" fill="#e8b820"/>
+  <rect x="15" y="32" width="70" height="9" rx="1" fill="#2f8a8a"/>
+  <rect x="15" y="46" width="70" height="9" rx="1" fill="#a63a1f"/>
+  <rect x="15" y="60" width="70" height="9" rx="1" fill="#c4452b"/>
+  <rect x="15" y="74" width="70" height="9" rx="1" fill="#e8b820"/>
 </svg>
