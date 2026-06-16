@@ -14,4 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', open);
     });
   }
+
+  // Bouton flottant "Réserver" mobile
+  const fab = document.getElementById('mobile-fab');
+  if (fab) {
+    const btn = fab.querySelector('.mobile-fab-toggle');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fab.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!fab.contains(e.target)) fab.classList.remove('open');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') fab.classList.remove('open');
+    });
+  }
 });

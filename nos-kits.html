@@ -255,9 +255,20 @@
   </footer>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/gallery.js"></script>
-  <div class="mobile-cta-bar">
-    <a href="reservation.html">Réserver mon kit</a>
-    <small>Dès 35 €/nuit · Caution non débitée</small>
+  <div class="mobile-fab" id="mobile-fab">
+    <div class="mobile-fab-panel">
+      <p class="mobile-fab-title">Prêt à partir ?</p>
+      <p class="mobile-fab-sub">Dès 35 €/nuit · Caution non débitée</p>
+      <a href="reservation.html">Réserver mon kit</a>
+    </div>
+    <button class="mobile-fab-toggle" type="button" aria-label="Ouvrir le menu de réservation">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    </button>
   </div>
 </body>
 </html>
