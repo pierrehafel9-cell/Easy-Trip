@@ -182,7 +182,7 @@ p { margin: 0 0 1em; }
 }
 .btn-ghost:hover { background: var(--color-ink); color: #fff; }
 .site-header .btn-ghost { color: var(--color-cream); border-color: var(--color-cream); }
-.btn-sm { padding: .55rem 1.5rem; font-size: .9rem; }
+.btn-sm { padding: .6rem 1.75rem; font-size: .9rem; }
 .btn-lg { padding: 1rem 1.75rem; font-size: 1.05rem; }
 .btn-block { width: 100%; display: block; }
 
