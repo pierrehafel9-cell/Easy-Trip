@@ -1,41 +1,36 @@
-// netlify/functions/create-checkout-session.js
-// Crée une session Stripe Checkout pour la location.
-// Le paiement de la location est encaissé immédiatement.
-// La carte est sauvegardée (setup_future_usage) pour pouvoir débiter
-// la caution ou les éventuels dégâts plus tard, sans nouvelle saisie du client.
+// functions/api/create-checkout-session.js
+// Cloudflare Pages Function — crée une session Stripe Checkout.
 
-const Stripe = require('stripe');
+import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-12-18.acacia',
-});
-
-const SITE_URL = process.env.SITE_URL || 'https://zippy-daifuku-39c51c.netlify.app';
 const CAUTION_EUR = 500;
 
-exports.handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return cors({ statusCode: 204, body: '' });
-  }
-  if (event.httpMethod !== 'POST') {
-    return cors({ statusCode: 405, body: 'Method not allowed' });
-  }
+export async function onRequestOptions() {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders(),
+  });
+}
 
+export async function onRequestPost({ request, env }) {
   try {
-    const payload = JSON.parse(event.body || '{}');
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+      apiVersion: '2024-12-18.acacia',
+      httpClient: Stripe.createFetchHttpClient(),
+    });
+    const SITE_URL = env.SITE_URL || 'https://easy-trip.pages.dev';
+
+    const payload = await request.json();
     const { dates = {}, customer = {}, vehicle = {}, options = [], pricing = {}, persons = 1 } = payload;
 
-    // Validation basique
     if (!dates.start || !dates.end || !customer.email) {
-      return cors({ statusCode: 400, body: JSON.stringify({ error: 'Champs obligatoires manquants' }) });
+      return json({ error: 'Champs obligatoires manquants' }, 400);
     }
-
     const baseTotal = Math.round((pricing.baseTotal || 0) * 100);
     if (baseTotal <= 0) {
-      return cors({ statusCode: 400, body: JSON.stringify({ error: 'Montant de location invalide' }) });
+      return json({ error: 'Montant de location invalide' }, 400);
     }
 
-    // Lignes du panier : la location + chaque option
     const lineItems = [
       {
         price_data: {
@@ -58,9 +53,8 @@ exports.handler = async (event) => {
       })),
     ];
 
-    // Metadata : tout ce qu'il faut pour gérer la résa côté Easy Trip
     const metadata = {
-      kit: payload.kit || 'Kit M — SUV / Break',
+      kit: payload.kit || 'Kit Easy Trip',
       dates_start: dates.start,
       dates_end: dates.end,
       nights: String(dates.nights || 0),
@@ -82,7 +76,6 @@ exports.handler = async (event) => {
       customer_email: customer.email,
       locale: 'fr',
       line_items: lineItems,
-      // Sauvegarde la carte pour pouvoir débiter la caution / les dégâts plus tard
       payment_intent_data: {
         setup_future_usage: 'off_session',
         receipt_email: customer.email,
@@ -92,36 +85,28 @@ exports.handler = async (event) => {
       metadata,
       success_url: `${SITE_URL}/reservation-confirmee.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/reservation.html`,
-      // Note : la caution de 500 € sera pré-autorisée le jour du début de la location
-      // via une fonction séparée (create-deposit-hold.js), et libérée/capturée au retour.
     });
 
-    return cors({
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: session.url, sessionId: session.id }),
-    });
+    return json({ url: session.url, sessionId: session.id }, 200);
   } catch (err) {
     console.error('[create-checkout-session]', err);
-    return cors({
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message || 'Erreur serveur' }),
-    });
+    return json({ error: err.message || 'Erreur serveur' }, 500);
   }
-};
-
-function cors(response) {
-  return {
-    ...response,
-    headers: {
-      ...(response.headers || {}),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  };
 }
 
+function corsHeaders() {
+  return {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
+function json(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...corsHeaders() },
+  });
+}
 function formatDate(iso) {
   if (!iso) return '';
   const [y, m, d] = iso.split('-');

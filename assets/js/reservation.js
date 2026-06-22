@@ -175,7 +175,7 @@
     submitBtn.textContent = 'Préparation du paiement…';
 
     try {
-      const resp = await fetch('/.netlify/functions/create-checkout-session', {
+      const resp = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

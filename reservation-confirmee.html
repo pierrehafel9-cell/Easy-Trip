@@ -117,7 +117,7 @@
         return;
       }
       try {
-        const r = await fetch('/.netlify/functions/get-session?session_id=' + encodeURIComponent(sessionId));
+        const r = await fetch('/api/get-session?session_id=' + encodeURIComponent(sessionId));
         if (!r.ok) throw new Error('Détails indisponibles');
         const data = await r.json();
         const m = data.metadata || {};
