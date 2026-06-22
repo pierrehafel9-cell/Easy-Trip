@@ -52,7 +52,7 @@
           <ol class="next-steps">
             <li>📧 <strong>Vous recevez un email de confirmation</strong> de Stripe (reçu de paiement) et d'Easy Trip (récapitulatif + adresse précise du lieu de remise à La Rochelle ou alentours).</li>
             <li>🚗 <strong>Pensez à vérifier la compatibilité</strong> de votre véhicule si ce n'est pas déjà fait — on peut aussi le faire ensemble par téléphone.</li>
-            <li>🔒 <strong>Le jour du départ</strong>, lors de la prise en charge du kit, nous bloquerons 1 200 € sur votre carte à titre de caution (non débitée). Le blocage est levé au retour du kit en bon état.</li>
+            <li>🔒 <strong>Le jour du départ</strong>, lors de la prise en charge du kit, nous bloquerons 500 € sur votre carte à titre de caution (non débitée). Le blocage est levé au retour du kit en bon état.</li>
             <li>🏕️ <strong>Bon voyage !</strong></li>
           </ol>
 
@@ -128,7 +128,7 @@
           ['Options', m.options || '—'],
           ['Montant payé', formatAmount(data.amount, data.currency)],
           ['Email', data.email],
-          ['Caution (à bloquer le jour J)', '1 200 €'],
+          ['Caution (à bloquer le jour J)', '500 €'],
         ].filter(([, v]) => v);
         list.innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHtml(v)}</dd>`).join('');
         loading.hidden = true;

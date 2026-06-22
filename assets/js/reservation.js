@@ -6,7 +6,7 @@
     low: 35,   // Basse saison : sept → juin
     high: 45,  // Haute saison : juillet & août
   };
-  const CAUTION = 1200;
+  const CAUTION = 500;
   const HIGH_MONTHS = new Set([6, 7]); // juillet (6) & août (7)
   const PORTE_VELO_NAME = 'Porte-vélos (2 vélos)';
   const PORTE_VELO_LEAD_DAYS = 15;

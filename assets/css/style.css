@@ -182,7 +182,7 @@ p { margin: 0 0 1em; }
 }
 .btn-ghost:hover { background: var(--color-ink); color: #fff; }
 .site-header .btn-ghost { color: var(--color-cream); border-color: var(--color-cream); }
-.btn-sm { padding: .6rem 1.75rem; font-size: .9rem; }
+.btn-sm { padding: .65rem 2.25rem; font-size: .9rem; }
 .btn-lg { padding: 1rem 1.75rem; font-size: 1.05rem; }
 .btn-block { width: 100%; display: block; }
 
@@ -191,7 +191,7 @@ p { margin: 0 0 1em; }
   position: relative;
   background:
     linear-gradient(135deg, rgba(31,34,34,.78) 0%, rgba(44,53,49,.7) 55%, rgba(61,90,63,.65) 100%),
-    url('../img/hero.jpg') center 30%/cover no-repeat;
+    #1f2222 center/cover no-repeat;
   color: var(--color-cream);
   padding: 6rem 0 5rem;
   overflow: hidden;
@@ -493,10 +493,15 @@ p { margin: 0 0 1em; }
   scroll-snap-align: center;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--color-surface-alt);
-  aspect-ratio: 4 / 3;
+  background: var(--color-ink);
+  aspect-ratio: 4 / 5;
   position: relative;
   box-shadow: var(--shadow-sm);
+}
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .gallery-slide img {
   width: 100%;
@@ -1035,17 +1040,20 @@ p { margin: 0 0 1em; }
 .contact-info h3:first-child { margin-top: 0; }
 .contact-info a { color: var(--color-ink); }
 
-.socials { display: flex; gap: .5rem; margin-top: .5rem; }
+.socials { display: flex; gap: .65rem; margin-top: .5rem; align-items: center; }
 .socials a {
   display: inline-grid; place-items: center;
-  width: 38px; height: 38px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   background: var(--color-ink);
   color: var(--color-cream);
-  font-size: .85rem;
-  font-weight: 600;
+  transition: background .15s, transform .15s;
 }
-.socials a:hover { background: var(--color-rust); text-decoration: none; }
+.socials a svg { width: 20px; height: 20px; fill: currentColor; }
+.socials a:hover { background: var(--color-rust); transform: scale(1.05); text-decoration: none; }
+
+.compat-list { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .75rem 0; font-size: .9rem; }
+.compat-list p { margin: .35rem 0; line-height: 1.5; }
 
 /* ========== Footer ========== */
 .site-footer {

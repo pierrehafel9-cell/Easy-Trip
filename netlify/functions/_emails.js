@@ -71,7 +71,7 @@ function clientEmail({ session }) {
         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#fdf3ef;border-left:4px solid ${BRAND.rust};border-radius:8px;">
           <tr><td style="padding:18px 22px;">
             <p style="margin:0 0 6px;font-size:14px;font-weight:700;color:${BRAND.ink};">🔒 La caution</p>
-            <p style="margin:0;font-size:13px;color:${BRAND.ink};line-height:1.6;">Le jour du début de la location, nous bloquerons <strong>1 200 €</strong> sur la carte que vous venez d'utiliser (caution non débitée). Le blocage est levé au retour du kit en bon état.</p>
+            <p style="margin:0;font-size:13px;color:${BRAND.ink};line-height:1.6;">Le jour du début de la location, nous bloquerons <strong>500 €</strong> sur la carte que vous venez d'utiliser (caution non débitée). Le blocage est levé au retour du kit en bon état.</p>
           </td></tr>
         </table>
       </td></tr>
@@ -172,7 +172,7 @@ function adminEmail({ session }) {
             <strong>À faire :</strong><br>
             1. Vérifier la compatibilité du véhicule si besoin<br>
             2. Envoyer l'adresse précise au client (48h avant)<br>
-            3. Le jour J : bloquer 1 200 € de caution via Stripe Dashboard
+            3. Le jour J : bloquer 500 € de caution via Stripe Dashboard
           </td></tr>
         </table>
       </td></tr>

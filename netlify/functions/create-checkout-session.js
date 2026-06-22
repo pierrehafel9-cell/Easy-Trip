@@ -11,7 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 const SITE_URL = process.env.SITE_URL || 'https://zippy-daifuku-39c51c.netlify.app';
-const CAUTION_EUR = 1200;
+const CAUTION_EUR = 500;
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
@@ -92,7 +92,7 @@ exports.handler = async (event) => {
       metadata,
       success_url: `${SITE_URL}/reservation-confirmee.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/reservation.html`,
-      // Note : la caution de 1200 € sera pré-autorisée le jour du début de la location
+      // Note : la caution de 500 € sera pré-autorisée le jour du début de la location
       // via une fonction séparée (create-deposit-hold.js), et libérée/capturée au retour.
     });
 
