@@ -312,6 +312,7 @@ p { margin: 0 0 1em; }
   gap: 3rem;
   align-items: center;
 }
+.split > * { min-width: 0; }
 @media (max-width: 840px) {
   .split { grid-template-columns: 1fr; gap: 2rem; }
 }
