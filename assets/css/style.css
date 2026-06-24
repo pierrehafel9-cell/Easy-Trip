@@ -495,7 +495,7 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--color-surface-alt);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   position: relative;
   box-shadow: var(--shadow-sm);
 }
@@ -707,7 +707,7 @@ p { margin: 0 0 1em; }
 
 /* Galerie dans le split (taille plus compacte) */
 .split-media .gallery { margin: 0; }
-.split-media .gallery-slide { aspect-ratio: 3 / 4; }
+.split-media .gallery-slide { aspect-ratio: 1 / 1; }
 
 /* ========== Accessoires ========== */
 .cat-title {
