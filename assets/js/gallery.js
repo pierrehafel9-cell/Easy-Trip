@@ -21,33 +21,37 @@
   });
   const dots = Array.from(dotsContainer.children);
 
+  let index = 0;
+
   function currentIndex() {
     const slideWidth = slides[0].offsetWidth + 16; // gap
     return Math.round(track.scrollLeft / slideWidth);
   }
-  function goTo(i) {
-    const clamped = Math.max(0, Math.min(slides.length - 1, i));
-    slides[clamped].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  function updateUI() {
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === index));
+    thumbs.forEach((t, idx) => t.classList.toggle('active', idx === index));
   }
-  function updateDots() {
-    const i = currentIndex();
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-    thumbs.forEach((t, idx) => t.classList.toggle('active', idx === i));
+  function goTo(i) {
+    index = Math.max(0, Math.min(slides.length - 1, i));
+    slides[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    updateUI();
   }
 
   thumbs.forEach((t, i) => t.addEventListener('click', () => goTo(i)));
 
-  prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
-  nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
+  prevBtn.addEventListener('click', () => goTo(index - 1));
+  nextBtn.addEventListener('click', () => goTo(index + 1));
   track.addEventListener('scroll', () => {
     clearTimeout(track._t);
-    track._t = setTimeout(updateDots, 80);
+    track._t = setTimeout(() => {
+      index = currentIndex();
+      updateUI();
+    }, 80);
   });
 
   // Auto-play léger (toutes les 6 sec, stoppé au hover/touch)
   let auto = setInterval(() => {
-    const i = currentIndex();
-    goTo(i >= slides.length - 1 ? 0 : i + 1);
+    goTo(index >= slides.length - 1 ? 0 : index + 1);
   }, 6000);
   ['mouseenter', 'touchstart'].forEach(ev =>
     gallery.addEventListener(ev, () => { clearInterval(auto); }, { passive: true })
