@@ -74,6 +74,7 @@ export async function onRequestPost({ request, env }) {
       mode: 'payment',
       payment_method_types: ['card'],
       customer_email: customer.email,
+      customer_creation: 'always',
       locale: 'fr',
       line_items: lineItems,
       payment_intent_data: {
