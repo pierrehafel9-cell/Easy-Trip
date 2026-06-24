@@ -3,4 +3,4 @@ Allow: /
 Disallow: /reservation-confirmee.html
 Disallow: /.netlify/
 
-Sitemap: https://zippy-daifuku-39c51c.netlify.app/sitemap.xml
+Sitemap: https://easytripfrance.fr/sitemap.xml
