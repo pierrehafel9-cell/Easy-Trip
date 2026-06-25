@@ -28,12 +28,16 @@ export async function onRequestGet({ request, env }) {
     for (let page = 0; page < 10; page++) {
       const list = await stripe.checkout.sessions.list({
         limit: 100,
+        expand: ['data.payment_intent.latest_charge'],
         ...(startingAfter ? { starting_after: startingAfter } : {}),
       });
 
       for (const session of list.data) {
         if (session.mode !== 'payment') continue;
         if (session.payment_status !== 'paid') continue;
+        const pi = session.payment_intent;
+        const amountRefunded = pi?.latest_charge?.amount_refunded ?? 0;
+        if (pi && amountRefunded >= pi.amount) continue; // entièrement remboursée : date libérée
         const m = session.metadata || {};
         if (!m.dates_start || !m.dates_end) continue;
         reservations.push({
