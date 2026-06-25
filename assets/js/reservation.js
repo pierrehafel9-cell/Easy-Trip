@@ -14,6 +14,45 @@
   const form = document.getElementById('reservation-form');
   if (!form) return;
 
+  // Modèles SUV/break courants par marque, pour suggérer dans la liste déroulante du modèle.
+  const MODELS_BY_BRAND = {
+    'Audi': ['Q2', 'Q3', 'Q5', 'Q7', 'A4 Allroad', 'A6 Allroad'],
+    'BMW': ['X1', 'X2', 'X3', 'X5', 'Série 3 Touring', 'Série 5 Touring'],
+    'Citroën': ['C3 Aircross', 'C4 Cactus', 'C5 Aircross', 'Berlingo'],
+    'Cupra': ['Ateca', 'Formentor'],
+    'Dacia': ['Duster', 'Jogger'],
+    'DS': ['DS3 Crossback', 'DS7 Crossback'],
+    'Fiat': ['500X', 'Tipo Cross'],
+    'Ford': ['Kuga', 'Puma', 'EcoSport', 'Focus SW'],
+    'Honda': ['CR-V', 'HR-V'],
+    'Hyundai': ['Kona', 'Tucson', 'Santa Fe'],
+    'Jeep': ['Renegade', 'Compass', 'Cherokee'],
+    'Kia': ['Sportage', 'Niro', 'Sorento'],
+    'Land Rover': ['Discovery Sport', 'Range Rover Evoque', 'Defender'],
+    'Mazda': ['CX-3', 'CX-5', 'CX-30'],
+    'Mercedes-Benz': ['GLA', 'GLB', 'GLC', 'Classe B'],
+    'MINI': ['Countryman', 'Clubman'],
+    'Mitsubishi': ['ASX', 'Outlander'],
+    'Nissan': ['Qashqai', 'X-Trail', 'Juke'],
+    'Opel': ['Crossland', 'Grandland', 'Astra Sports Tourer'],
+    'Peugeot': ['2008', '3008', '5008', '308 SW'],
+    'Renault': ['Captur', 'Kadjar', 'Austral', 'Scenic'],
+    'SEAT': ['Arona', 'Ateca', 'Tarraco'],
+    'Škoda': ['Karoq', 'Kodiaq', 'Octavia Combi'],
+    'Suzuki': ['Vitara', 'S-Cross'],
+    'Toyota': ['C-HR', 'RAV4', 'Yaris Cross'],
+    'Volkswagen': ['T-Roc', 'Tiguan', 'Touran', 'Golf SW'],
+    'Volvo': ['XC40', 'XC60', 'V60 Cross Country'],
+  };
+  const vehicleBrandInput = document.getElementById('vehicle-brand');
+  const vehicleModelList = document.getElementById('vehicle-model-list');
+  if (vehicleBrandInput && vehicleModelList) {
+    vehicleBrandInput.addEventListener('input', () => {
+      const models = MODELS_BY_BRAND[vehicleBrandInput.value] || [];
+      vehicleModelList.innerHTML = models.map((m) => `<option value="${m}"></option>`).join('');
+    });
+  }
+
   const startInput = document.getElementById('date-start');
   const endInput = document.getElementById('date-end');
   const personsInput = document.getElementById('persons');
