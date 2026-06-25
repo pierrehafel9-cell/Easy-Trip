@@ -1298,3 +1298,24 @@ p { margin: 0 0 1em; }
   padding: .5rem .6rem;
   border-bottom: 1px solid var(--color-line);
 }
+.admin-tabs {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.admin-tab {
+  background: none;
+  border: none;
+  padding: .75rem 1.25rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+.admin-tab.is-active {
+  color: var(--color-rust);
+  border-bottom-color: var(--color-rust);
+}
