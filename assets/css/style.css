@@ -1319,3 +1319,30 @@ p { margin: 0 0 1em; }
   color: var(--color-rust);
   border-bottom-color: var(--color-rust);
 }
+
+.autocomplete-field { position: relative; }
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 2px 0 0;
+  padding: .25rem 0;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  max-height: 220px;
+  overflow-y: auto;
+}
+.autocomplete-list li {
+  padding: .6rem .9rem;
+  font-size: .95rem;
+  cursor: pointer;
+}
+.autocomplete-list li:hover,
+.autocomplete-list li:active {
+  background: var(--color-surface-alt);
+}

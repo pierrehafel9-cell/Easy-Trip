@@ -72,43 +72,15 @@
             <div class="form-block">
               <h2>2. Votre véhicule</h2>
               <div class="form-row">
-                <div class="form-field">
+                <div class="form-field autocomplete-field">
                   <label for="vehicle-brand">Marque</label>
-                  <input type="text" id="vehicle-brand" name="vehicle-brand" placeholder="Ex : Peugeot" list="vehicle-brand-list" autocomplete="off" />
-                  <datalist id="vehicle-brand-list">
-                    <option value="Audi"></option>
-                    <option value="BMW"></option>
-                    <option value="Citroën"></option>
-                    <option value="Cupra"></option>
-                    <option value="Dacia"></option>
-                    <option value="DS"></option>
-                    <option value="Fiat"></option>
-                    <option value="Ford"></option>
-                    <option value="Honda"></option>
-                    <option value="Hyundai"></option>
-                    <option value="Jeep"></option>
-                    <option value="Kia"></option>
-                    <option value="Land Rover"></option>
-                    <option value="Mazda"></option>
-                    <option value="Mercedes-Benz"></option>
-                    <option value="MINI"></option>
-                    <option value="Mitsubishi"></option>
-                    <option value="Nissan"></option>
-                    <option value="Opel"></option>
-                    <option value="Peugeot"></option>
-                    <option value="Renault"></option>
-                    <option value="SEAT"></option>
-                    <option value="Škoda"></option>
-                    <option value="Suzuki"></option>
-                    <option value="Toyota"></option>
-                    <option value="Volkswagen"></option>
-                    <option value="Volvo"></option>
-                  </datalist>
+                  <input type="text" id="vehicle-brand" name="vehicle-brand" placeholder="Ex : Peugeot" autocomplete="off" />
+                  <ul class="autocomplete-list" id="vehicle-brand-list" hidden></ul>
                 </div>
-                <div class="form-field">
+                <div class="form-field autocomplete-field">
                   <label for="vehicle-model">Modèle</label>
-                  <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Ex : 3008" list="vehicle-model-list" autocomplete="off" />
-                  <datalist id="vehicle-model-list"></datalist>
+                  <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Ex : 3008" autocomplete="off" />
+                  <ul class="autocomplete-list" id="vehicle-model-list" hidden></ul>
                 </div>
                 <div class="form-field small-field">
                   <label for="vehicle-year">Année</label>

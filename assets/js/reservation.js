@@ -44,14 +44,55 @@
     'Volkswagen': ['T-Roc', 'Tiguan', 'Touran', 'Golf SW'],
     'Volvo': ['XC40', 'XC60', 'V60 Cross Country'],
   };
+  const BRANDS = Object.keys(MODELS_BY_BRAND);
   const vehicleBrandInput = document.getElementById('vehicle-brand');
+  const vehicleModelInput = document.getElementById('vehicle-model');
+  const vehicleBrandList = document.getElementById('vehicle-brand-list');
   const vehicleModelList = document.getElementById('vehicle-model-list');
-  if (vehicleBrandInput && vehicleModelList) {
-    vehicleBrandInput.addEventListener('input', () => {
-      const models = MODELS_BY_BRAND[vehicleBrandInput.value] || [];
-      vehicleModelList.innerHTML = models.map((m) => `<option value="${m}"></option>`).join('');
+
+  // Liste déroulante custom (le <datalist> natif ne s'affiche pas sur certains mobiles).
+  function setupAutocomplete(input, listEl, getOptions) {
+    if (!input || !listEl) return;
+    function renderOptions(options) {
+      if (!options.length) {
+        listEl.hidden = true;
+        listEl.innerHTML = '';
+        return;
+      }
+      listEl.innerHTML = options
+        .map((opt) => `<li role="option">${opt}</li>`)
+        .join('');
+      listEl.hidden = false;
+    }
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      const options = getOptions().filter((opt) => opt.toLowerCase().startsWith(query));
+      renderOptions(query ? options : []);
+    });
+    input.addEventListener('focus', () => {
+      const query = input.value.trim().toLowerCase();
+      if (!query) return;
+      const options = getOptions().filter((opt) => opt.toLowerCase().startsWith(query));
+      renderOptions(options);
+    });
+    listEl.addEventListener('mousedown', (e) => {
+      const li = e.target.closest('li');
+      if (!li) return;
+      e.preventDefault();
+      input.value = li.textContent;
+      listEl.hidden = true;
+      listEl.innerHTML = '';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target !== input && !listEl.contains(e.target)) {
+        listEl.hidden = true;
+      }
     });
   }
+
+  setupAutocomplete(vehicleBrandInput, vehicleBrandList, () => BRANDS);
+  setupAutocomplete(vehicleModelInput, vehicleModelList, () => MODELS_BY_BRAND[vehicleBrandInput.value] || []);
 
   const startInput = document.getElementById('date-start');
   const endInput = document.getElementById('date-end');
