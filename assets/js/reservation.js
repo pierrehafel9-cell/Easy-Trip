@@ -218,7 +218,7 @@
     });
 
     return {
-      kit: 'Kit M — SUV / Break',
+      kit: 'Kit Easy Trip — SUV / Break',
       dates: { start: startInput.value, end: endInput.value, nights: base.nights, low: base.low, high: base.high },
       persons,
       vehicle: {
