@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.svg" />
+  <meta name="theme-color" content="#1f2222" />
+  <title>Carte enregistrée — Easy Trip</title>
+  <meta name="description" content="Votre carte a bien été enregistrée pour Easy Trip." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="Easy Trip" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="nos-kits.html">Nos kits</a>
+        <a href="accessoires.html">Accessoires</a>
+        <a href="comment-ca-marche.html">Comment ça marche</a>
+        <a href="contact.html">Contact</a>
+        <a href="reservation.html" class="btn btn-primary btn-sm">Réserver</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container narrow">
+        <div class="confirm-card" id="card-success">
+          <div class="confirm-icon">✓</div>
+          <h1>Merci, votre carte est bien enregistrée !</h1>
+          <p class="lead">Aucun montant n'a été débité. Cette carte servira uniquement au blocage de la caution de 500 € le jour de votre départ (et sera levée au retour du kit en bon état).</p>
+          <div class="center" style="margin-top:2rem;">
+            <a href="index.html" class="btn btn-ghost">Retour à l'accueil</a>
+            <a href="contact.html" class="btn btn-primary">Une question ? Contactez-nous</a>
+          </div>
+        </div>
+        <div class="confirm-card" id="card-cancel" hidden>
+          <h1>Enregistrement annulé</h1>
+          <p class="lead">Vous n'avez pas finalisé l'enregistrement de votre carte. Pas d'inquiétude — contactez-nous pour réessayer.</p>
+          <div class="center" style="margin-top:2rem;">
+            <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><img src="assets/img/logo.svg" alt="Easy Trip" style="height:50px;" /></div>
+        <p class="muted">Les kits pour dormir où tu veux et quand tu veux.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="nos-kits.html">Nos kits</a></li>
+          <li><a href="accessoires.html">Accessoires</a></li>
+          <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+          <li><a href="reservation.html">Réservation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>easytrip.kit@gmail.com</li>
+          <li>+33 6 45 04 45 47</li>
+          <li>La Rochelle, France</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suivez-nous</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/easytrip_france/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Easy Trip. Tous droits réservés.</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>
+    if (new URLSearchParams(window.location.search).get('annule')) {
+      document.getElementById('card-success').hidden = true;
+      document.getElementById('card-cancel').hidden = false;
+    }
+  </script>
+</body>
+</html>

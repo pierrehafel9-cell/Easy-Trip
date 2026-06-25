@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="theme-color" content="#1f2222" />
+  <title>Outil interne — Easy Trip</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="container narrow">
+        <div class="confirm-card">
+          <h1>Générer un lien d'enregistrement de carte</h1>
+          <p class="lead">Pour un client dont la carte d'origine ne supporte pas le blocage de caution (Revolut, néobanque, 3DS strict...). Le client enregistre sa carte sans aucun débit — 0 € débité, 0 frais Stripe.</p>
+
+          <div class="form-block" style="margin-top:2rem;">
+            <label for="admin-secret">Mot de passe admin</label>
+            <input type="password" id="admin-secret" placeholder="Mot de passe" style="width:100%;margin-bottom:1rem;" />
+
+            <label for="client-email">Email du client</label>
+            <input type="email" id="client-email" placeholder="client@exemple.com" style="width:100%;margin-bottom:1rem;" />
+
+            <button type="button" id="generate-btn" class="btn btn-primary">Générer le lien</button>
+          </div>
+
+          <div id="result" style="margin-top:1.5rem;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById('generate-btn');
+    const result = document.getElementById('result');
+    btn.addEventListener('click', async () => {
+      const secret = document.getElementById('admin-secret').value.trim();
+      const email = document.getElementById('client-email').value.trim();
+      if (!secret || !email) {
+        result.innerHTML = '<p style="color:#c4452b;">Mot de passe et email requis.</p>';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Génération…';
+      try {
+        const r = await fetch('/api/create-setup-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-admin-secret': secret },
+          body: JSON.stringify({ email }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || 'Erreur');
+        result.innerHTML = `
+          <p style="color:#2f8a8a;font-weight:600;">Lien généré :</p>
+          <p style="word-break:break-all;background:#faf6ee;padding:1rem;border-radius:8px;">${data.url}</p>
+          <button type="button" class="btn btn-ghost" id="copy-btn">Copier le lien</button>
+        `;
+        document.getElementById('copy-btn').addEventListener('click', () => {
+          navigator.clipboard.writeText(data.url);
+          document.getElementById('copy-btn').textContent = 'Copié !';
+        });
+      } catch (e) {
+        result.innerHTML = `<p style="color:#c4452b;">Erreur : ${e.message}</p>`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Générer le lien';
+      }
+    });
+  </script>
+</body>
+</html>
