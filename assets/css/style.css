@@ -645,43 +645,6 @@ p { margin: 0 0 1em; }
   padding: .75rem 1rem;
   font-size: .9rem;
 }
-.mes {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  z-index: 2;
-}
-.mes .dot {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.4);
-}
-.mes .label {
-  background: rgba(31,34,34,.92);
-  color: #fff;
-  padding: .4rem .75rem;
-  border-radius: var(--radius-sm);
-  font-size: .85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0,0,0,.3);
-}
-/* Positions calées sur kit-couchage.jpg (vue dessus du coffre + matelas) */
-.mes-1 { top: 18%; left: 50%; transform: translateX(-50%); }   /* longueur du couchage */
-.mes-2 { top: 50%; left: 8%; }                                 /* largeur du coffre */
-.mes-3 { bottom: 12%; right: 8%; flex-direction: row-reverse; } /* hauteur */
-@media (max-width: 600px) {
-  .mes .label { font-size: .75rem; padding: .3rem .55rem; }
-  .mes .dot { width: 26px; height: 26px; font-size: .9rem; border-width: 2px; }
-}
-
 .compat-step {
   position: relative;
   padding-top: 1.75rem;
