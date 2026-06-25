@@ -1228,3 +1228,73 @@ p { margin: 0 0 1em; }
 @media (max-width: 720px) {
   .mobile-fab { display: block; }
 }
+
+/* =========================================================
+   Planning interne (admin-planning.html)
+   ========================================================= */
+.planning-months {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.planning-month h3 {
+  font-size: 1.1rem;
+  margin-bottom: .75rem;
+  text-transform: capitalize;
+}
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.planning-grid .dow {
+  font-size: .7rem;
+  color: var(--color-muted);
+  text-align: center;
+  font-weight: 600;
+}
+.planning-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  cursor: default;
+}
+.planning-day.empty { background: transparent; border: none; }
+.planning-day.booked {
+  background: var(--color-rust);
+  color: #fff;
+  border-color: var(--color-rust-dark);
+  font-weight: 600;
+}
+.planning-day.booked:hover::after {
+  content: attr(data-client);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-ink);
+  color: #fff;
+  padding: .3rem .6rem;
+  border-radius: var(--radius-sm);
+  font-size: .75rem;
+  white-space: nowrap;
+  z-index: 5;
+}
+.planning-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+.planning-list th, .planning-list td {
+  text-align: left;
+  padding: .5rem .6rem;
+  border-bottom: 1px solid var(--color-line);
+}

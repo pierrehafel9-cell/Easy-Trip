@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="theme-color" content="#1f2222" />
+  <title>Planning interne — Easy Trip</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="confirm-card" id="login-card">
+          <h1>Planning des réservations</h1>
+          <p class="lead">Les dates réservées (paiement effectué) se bloquent automatiquement, avec le nom du client.</p>
+          <div class="form-block" style="margin-top:1.5rem;max-width:360px;">
+            <label for="admin-secret">Mot de passe admin</label>
+            <input type="password" id="admin-secret" placeholder="Mot de passe" style="width:100%;margin-bottom:1rem;" />
+            <button type="button" id="load-btn" class="btn btn-primary">Afficher le planning</button>
+          </div>
+          <div id="error" style="margin-top:1rem;"></div>
+        </div>
+
+        <div id="planning-card" hidden>
+          <h1>Planning des réservations</h1>
+          <div class="planning-months" id="planning-months"></div>
+          <div class="planning-list">
+            <h3 style="margin-top:2rem;">Liste des réservations</h3>
+            <table>
+              <thead>
+                <tr><th>Client</th><th>Dates</th><th>Nuits</th><th>Email</th><th>Téléphone</th></tr>
+              </thead>
+              <tbody id="reservations-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const loginCard = document.getElementById('login-card');
+    const planningCard = document.getElementById('planning-card');
+    const errorBox = document.getElementById('error');
+    const loadBtn = document.getElementById('load-btn');
+
+    loadBtn.addEventListener('click', async () => {
+      const secret = document.getElementById('admin-secret').value.trim();
+      if (!secret) {
+        errorBox.innerHTML = '<p style="color:#c4452b;">Mot de passe requis.</p>';
+        return;
+      }
+      loadBtn.disabled = true;
+      loadBtn.textContent = 'Chargement…';
+      errorBox.innerHTML = '';
+      try {
+        const r = await fetch('/api/planning', {
+          method: 'GET',
+          headers: { 'x-admin-secret': secret },
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || 'Erreur');
+        renderPlanning(data.reservations);
+        loginCard.hidden = true;
+        planningCard.hidden = false;
+      } catch (e) {
+        errorBox.innerHTML = `<p style="color:#c4452b;">Erreur : ${e.message}</p>`;
+      } finally {
+        loadBtn.disabled = false;
+        loadBtn.textContent = 'Afficher le planning';
+      }
+    });
+
+    function renderPlanning(reservations) {
+      // Construit, pour chaque jour réservé, le nom du client correspondant.
+      const bookedByDate = {};
+      for (const res of reservations) {
+        const start = new Date(res.start + 'T00:00:00');
+        const end = new Date(res.end + 'T00:00:00');
+        const name = `${res.firstname} ${res.lastname}`.trim() || res.email || 'Client';
+        for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+          const key = d.toISOString().slice(0, 10);
+          bookedByDate[key] = name;
+        }
+      }
+
+      // Affiche le mois en cours + les 5 suivants.
+      const monthsContainer = document.getElementById('planning-months');
+      monthsContainer.innerHTML = '';
+      const today = new Date();
+      for (let i = 0; i < 6; i++) {
+        const monthDate = new Date(today.getFullYear(), today.getMonth() + i, 1);
+        monthsContainer.appendChild(renderMonth(monthDate, bookedByDate));
+      }
+
+      // Tableau récapitulatif, du plus récent au plus ancien.
+      const tbody = document.getElementById('reservations-tbody');
+      tbody.innerHTML = '';
+      [...reservations].reverse().forEach((res) => {
+        const tr = document.createElement('tr');
+        const name = `${res.firstname} ${res.lastname}`.trim() || '—';
+        tr.innerHTML = `
+          <td>${escapeHtml(name)}</td>
+          <td>${formatFr(res.start)} → ${formatFr(res.end)}</td>
+          <td>${escapeHtml(res.nights)}</td>
+          <td>${escapeHtml(res.email)}</td>
+          <td>${escapeHtml(res.phone)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderMonth(monthDate, bookedByDate) {
+      const wrap = document.createElement('div');
+      wrap.className = 'planning-month';
+      const title = document.createElement('h3');
+      title.textContent = monthDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+      wrap.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'planning-grid';
+      ['L', 'M', 'M', 'J', 'V', 'S', 'D'].forEach((d) => {
+        const dow = document.createElement('div');
+        dow.className = 'dow';
+        dow.textContent = d;
+        grid.appendChild(dow);
+      });
+
+      const year = monthDate.getFullYear();
+      const month = monthDate.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const startOffset = (firstDay.getDay() + 6) % 7; // lundi = 0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < startOffset; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'planning-day empty';
+        grid.appendChild(empty);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement('div');
+        const date = new Date(year, month, day);
+        const key = date.toISOString().slice(0, 10);
+        const client = bookedByDate[key];
+        cell.className = 'planning-day' + (client ? ' booked' : '');
+        cell.textContent = String(day);
+        if (client) cell.setAttribute('data-client', client);
+        grid.appendChild(cell);
+      }
+
+      wrap.appendChild(grid);
+      return wrap;
+    }
+
+    function formatFr(iso) {
+      if (!iso) return '';
+      const [y, m, d] = iso.split('-');
+      return `${d}/${m}/${y}`;
+    }
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
