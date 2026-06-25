@@ -5,7 +5,7 @@
 **Easy Trip** est un site de location en ligne de kits d'aménagement amovibles en bois pour transformer un véhicule (SUV, break) en mini-van le temps d'un voyage.
 
 - **Cliente / dirigeante** : Léane Appert (entrepreneur individuel)
-- **Lieu d'activité** : La Rochelle et alentour (Bordeaux/Arcachon sur demande)
+- **Lieu d'activité** : La Rochelle et alentours (Bordeaux/Arcachon sur demande)
 - **Activité officielle** : SIREN `106 429 699` · SIRET `10642969900015` · RCS Paris · APE `7739Z` · siège 47 rue Vivienne 75002 Paris (domiciliation Vivienne Domiciliation)
 - **TVA** : franchise (auto-entrepreneur, art. 293 B du CGI)
 - **Email** : `easytrip.kit@gmail.com` · Tél `+33 6 45 04 45 47` · Instagram `@easytrip_france`
