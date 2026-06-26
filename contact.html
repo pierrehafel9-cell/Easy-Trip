@@ -160,22 +160,52 @@
   </footer>
   <script src="assets/js/main.js"></script>
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const msg = document.getElementById('contact-message');
-      if (!this.checkValidity()) {
+      const form = this;
+      if (!form.checkValidity()) {
         msg.className = 'form-message error';
         msg.textContent = 'Merci de compléter tous les champs obligatoires.';
         msg.hidden = false;
-        this.reportValidity();
+        form.reportValidity();
         return;
       }
-      // Pour activer l'envoi réel, branchez Formspree, EmailJS ou un endpoint custom.
-      // Exemple : fetch('https://formspree.io/f/XXXX', { method:'POST', body: new FormData(this) });
-      msg.className = 'form-message success';
-      msg.textContent = 'Merci ! Votre message a bien été envoyé. Nous vous répondons sous 24 heures.';
-      msg.hidden = false;
-      this.reset();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      const data = new FormData(form);
+      const payload = {
+        firstname: data.get('firstname'),
+        lastname: data.get('lastname'),
+        email: data.get('email'),
+        phone: data.get('phone'),
+        subject: data.get('subject'),
+        message: data.get('message'),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('send failed');
+        msg.className = 'form-message success';
+        msg.textContent = 'Merci ! Votre message a bien été envoyé. Nous vous répondons sous 24 heures.';
+        msg.hidden = false;
+        form.reset();
+      } catch (err) {
+        msg.className = 'form-message error';
+        msg.textContent = "Une erreur est survenue. Réessayez ou écrivez-nous directement à easytrip.kit@gmail.com.";
+        msg.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
     });
   </script>
   <div class="mobile-fab" id="mobile-fab">
