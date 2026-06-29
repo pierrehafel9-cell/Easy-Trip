@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed Instagram Easy Trip</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fff6ea;
+      color: #1e1e1e;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 42px;
+      font-weight: 900;
+      color: #f47a1f;
+      letter-spacing: -1px;
+    }
+
+    .bio {
+      font-size: 18px;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 18px;
+      background: #f47a1f;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: bold;
+    }
+
+    .feed {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .post {
+      aspect-ratio: 1 / 1;
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      background: #e9d3b5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px;
+      box-sizing: border-box;
+    }
+
+    .post.orange {
+      background: #f47a1f;
+      color: white;
+    }
+
+    .post.cream {
+      background: #fff6ea;
+      border: 2px solid #f47a1f;
+    }
+
+    .post.green {
+      background: #a8b89f;
+      color: white;
+    }
+
+    .post.wood {
+      background: #9b6a3c;
+      color: white;
+    }
+
+    .post img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28);
+      z-index: 2;
+    }
+
+    .text {
+      position: relative;
+      z-index: 3;
+    }
+
+    .label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .small {
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 700px) {
+      .feed {
+        gap: 6px;
+      }
+
+      .post {
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+
+      .small {
+        font-size: 11px;
+      }
+
+      .label {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="header">
+      <div class="logo">EASY TRIP</div>
+      <div class="bio">
+        Transforme ta voiture en mini-van.<br>
+        Kit amovible, sans outil, pour dormir confortablement.
+      </div>
+      <div class="cta">DM "KIT" pour les infos</div>
+    </div>
+
+    <div class="feed">
+
+      <div class="post orange">
+        <div class="text">
+          <div class="label">Lancement</div>
+          <div class="title">Ta voiture peut devenir ton hébergement.</div>
+          <div class="small">Sans louer un van à 150€/nuit.</div>
+        </div>
+      </div>
+
+      <div class="post cream">
+        <div class="text">
+          <div class="label">Concept</div>
+          <div class="title">Un kit. Une voiture. Un week-end.</div>
+          <div class="small">Installation rapide, sans outil.</div>
+        </div>
+      </div>
+
+      <div class="post wood">
+        <div class="text">
+          <div class="label">Avant / Après</div>
+          <div class="title">Coffre vide → lit confortable.</div>
+          <div class="small">Le test arrive cette semaine.</div>
+        </div>
+      </div>
+
+      <div class="post green">
+        <div class="text">
+          <div class="label">FAQ</div>
+          <div class="title">Est-ce vraiment confortable ?</div>
+          <div class="small">On teste le matelas en conditions réelles.</div>
+        </div>
+      </div>
+
+      <div class="post orange">
+        <div class="text">
+          <div class="label">Prix</div>
+          <div class="title">Van, Airbnb ou Easy Trip ?</div>
+          <div class="small">Le comparatif qui pique.</div>
+        </div>
+      </div>
+
+      <div class="post cream">
+        <div class="text">
+          <div class="label">Road trip</div>
+          <div class="title">Ton vendredi soir peut ressembler à ça.</div>
+          <div class="small">Voiture, sunset, liberté.</div>
+        </div>
+      </div>
+
+      <div class="post wood">
+        <div class="text">
+          <div class="label">Festival</div>
+          <div class="title">Dormir sur un siège avant ? Plus jamais.</div>
+          <div class="small">La solution pour les festivals.</div>
+        </div>
+      </div>
+
+      <div class="post green">
+        <div class="text">
+          <div class="label">Sécurité</div>
+          <div class="title">Dormir en voiture, oui. N'importe où, non.</div>
+          <div class="small">On vérifie toujours les règles locales.</div>
+        </div>
+      </div>
+
+      <div class="post orange">
+        <div class="text">
+          <div class="label">Réservation</div>
+          <div class="title">Les premières dispos arrivent.</div>
+          <div class="small">DM "WEEK-END" pour être prioritaire.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
