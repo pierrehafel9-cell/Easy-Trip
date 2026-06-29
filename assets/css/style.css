@@ -1213,7 +1213,7 @@ p { margin: 0 0 1em; }
   to { transform: translateX(-50%); }
 }
 
-/* Bouton flottant rond WhatsApp en bas-droite */
+/* Bouton flottant rond "discuter" en bas-droite */
 .mobile-fab {
   display: flex;
   position: fixed;
@@ -1223,15 +1223,69 @@ p { margin: 0 0 1em; }
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #25d366;
+  background: var(--color-rust);
   color: #fff;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 22px rgba(37,211,102,.45), 0 2px 6px rgba(0,0,0,.18);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(196,69,43,.4), 0 2px 6px rgba(0,0,0,.18);
   transition: transform .2s ease, background .2s;
 }
 .mobile-fab:hover,
-.mobile-fab:active { background: #1ebe5a; transform: scale(1.05); }
+.mobile-fab:active { background: var(--color-rust-dark); transform: scale(1.05); }
+
+/* Fenêtre de chat */
+.chat-panel {
+  display: none;
+  position: fixed;
+  bottom: 86px;
+  right: 18px;
+  z-index: 100;
+  width: 320px;
+  max-width: calc(100vw - 36px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.18);
+  overflow: hidden;
+  flex-direction: column;
+}
+.chat-panel.open { display: flex; }
+.chat-panel-head {
+  background: var(--color-rust);
+  color: #fff;
+  padding: .9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chat-panel-head h4 { margin: 0; font-size: .95rem; font-family: 'Inter', sans-serif; }
+.chat-panel-head p { margin: .15rem 0 0; font-size: .78rem; opacity: .85; }
+.chat-panel-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 .25rem;
+}
+.chat-panel-body { padding: 1rem; }
+.chat-panel-body textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: .6rem .7rem;
+  font-family: inherit;
+  font-size: .9rem;
+  color: var(--color-ink);
+  margin-bottom: .7rem;
+}
+.chat-panel-body button.btn { width: 100%; }
+.chat-panel-hint { font-size: .76rem; color: var(--color-muted); margin-top: .6rem; }
 
 /* =========================================================
    Planning interne (admin-planning.html)

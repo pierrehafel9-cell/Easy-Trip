@@ -27,4 +27,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // Fenêtre de chat flottante -> WhatsApp
+  const fabToggle = document.getElementById('mobile-fab-toggle');
+  const chatPanel = document.getElementById('chat-panel');
+  const chatClose = document.getElementById('chat-panel-close');
+  const chatInput = document.getElementById('chat-panel-input');
+  const chatSend = document.getElementById('chat-panel-send');
+  if (fabToggle && chatPanel) {
+    const closeChat = () => {
+      chatPanel.classList.remove('open');
+      fabToggle.setAttribute('aria-expanded', 'false');
+    };
+    fabToggle.addEventListener('click', () => {
+      const open = chatPanel.classList.toggle('open');
+      fabToggle.setAttribute('aria-expanded', open);
+      if (open) chatInput.focus();
+    });
+    chatClose.addEventListener('click', closeChat);
+    chatSend.addEventListener('click', () => {
+      const text = chatInput.value.trim() || "Bonjour, j'ai une question sur Easy Trip :";
+      window.open('https://wa.me/33645044547?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    });
+    document.addEventListener('click', (e) => {
+      if (chatPanel.classList.contains('open') && !chatPanel.contains(e.target) && !fabToggle.contains(e.target)) {
+        closeChat();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeChat();
+    });
+  }
 });
