@@ -58,4 +58,67 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape') closeChat();
     });
   }
+
+  // Bande d'avis clients (charge les avis validés s'il y en a)
+  const track = document.getElementById('reviews-marquee-track');
+  if (track) {
+    fetch('assets/data/reviews.json')
+      .then((r) => r.ok ? r.json() : [])
+      .then((reviews) => {
+        if (Array.isArray(reviews) && reviews.length > 0) {
+          const items = reviews.map((rv) => {
+            const stars = '★'.repeat(rv.rating || 5) + '☆'.repeat(5 - (rv.rating || 5));
+            return `<span>${stars} « ${rv.message} » — ${rv.name}</span>`;
+          });
+          track.innerHTML = items.concat(items).join('');
+        }
+      })
+      .catch(() => {});
+  }
+
+  // Formulaire "Laisser un avis"
+  const reviewForm = document.getElementById('review-form');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('review-message');
+      if (!reviewForm.checkValidity()) {
+        msg.className = 'form-message error';
+        msg.textContent = 'Merci de compléter tous les champs.';
+        msg.hidden = false;
+        reviewForm.reportValidity();
+        return;
+      }
+      const submitBtn = reviewForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      const payload = {
+        name: document.getElementById('r-name').value,
+        rating: document.getElementById('r-rating').value,
+        message: document.getElementById('r-message').value,
+      };
+
+      try {
+        const res = await fetch('/api/submit-review', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('send failed');
+        msg.className = 'form-message success';
+        msg.textContent = 'Merci pour votre avis ! Il sera publié sur le site après validation.';
+        msg.hidden = false;
+        reviewForm.reset();
+      } catch (err) {
+        msg.className = 'form-message error';
+        msg.textContent = "Une erreur est survenue. Réessayez ou écrivez-nous à easytrip.kit@gmail.com.";
+        msg.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+  }
 });

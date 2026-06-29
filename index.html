@@ -223,13 +223,45 @@
     </section>
 
     <section class="reviews-marquee" aria-label="Avis clients">
-      <div class="reviews-marquee-track">
+      <div class="reviews-marquee-track" id="reviews-marquee-track">
         <span>⭐ En attente de vos prochaines aventures avec le kit…</span>
         <span>⭐ Soyez les premiers à partager votre expérience Easy Trip !</span>
         <span>⭐ En attente de vos prochaines aventures avec le kit…</span>
         <span>⭐ Soyez les premiers à partager votre expérience Easy Trip !</span>
         <span>⭐ En attente de vos prochaines aventures avec le kit…</span>
         <span>⭐ Soyez les premiers à partager votre expérience Easy Trip !</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="section-head center">
+          <p class="eyebrow">Votre avis compte</p>
+          <h2>Déjà parti à l'aventure avec le kit ?</h2>
+          <p class="muted">Partagez votre expérience. Les avis sont vérifiés avant publication sur le site.</p>
+        </div>
+        <form class="form-block" id="review-form" novalidate style="max-width:480px;margin:0 auto;">
+          <div class="form-field" style="margin-bottom:1rem;">
+            <label for="r-name">Votre prénom</label>
+            <input type="text" id="r-name" name="name" required />
+          </div>
+          <div class="form-field" style="margin-bottom:1rem;">
+            <label for="r-rating">Votre note</label>
+            <select id="r-rating" name="rating" required>
+              <option value="5">★★★★★ Excellent</option>
+              <option value="4">★★★★☆ Très bien</option>
+              <option value="3">★★★☆☆ Correct</option>
+              <option value="2">★★☆☆☆ Décevant</option>
+              <option value="1">★☆☆☆☆ Mauvais</option>
+            </select>
+          </div>
+          <div class="form-field" style="margin-bottom:1.25rem;">
+            <label for="r-message">Votre avis</label>
+            <textarea id="r-message" name="message" rows="4" required placeholder="Racontez votre expérience avec le kit Easy Trip…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer mon avis</button>
+          <div id="review-message" class="form-message" hidden></div>
+        </form>
       </div>
     </section>
 
