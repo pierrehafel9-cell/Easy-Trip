@@ -15,19 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bouton flottant "Réserver" mobile
-  const fab = document.getElementById('mobile-fab');
-  if (fab) {
-    const btn = fab.querySelector('.mobile-fab-toggle');
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      fab.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!fab.contains(e.target)) fab.classList.remove('open');
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') fab.classList.remove('open');
-    });
-  }
+  // Détail accessoire (bouton "i" dans le formulaire de réservation)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.option-info');
+    if (btn) {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) {
+        const wasOpen = !target.hidden;
+        document.querySelectorAll('.option-detail').forEach((d) => { d.hidden = true; });
+        target.hidden = wasOpen;
+      }
+    }
+  });
 });
