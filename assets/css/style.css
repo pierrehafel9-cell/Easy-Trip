@@ -693,7 +693,12 @@ p { margin: 0 0 1em; }
   border-radius: 999px;
   text-transform: uppercase;
 }
-.option-card { display: flex; flex-direction: column; }
+.option-card { display: flex; flex-direction: column; scroll-margin-top: 6.5rem; }
+.option-card:target { animation: option-highlight 2.2s ease; }
+@keyframes option-highlight {
+  0% { box-shadow: 0 0 0 3px var(--color-rust); }
+  100% { box-shadow: none; }
+}
 .option-card .media-placeholder,
 .option-card .icon-box,
 .option-card .photo-box { margin-bottom: 1rem; }
@@ -948,6 +953,21 @@ p { margin: 0 0 1em; }
 .option span { flex: 1; display: flex; justify-content: space-between; gap: .5rem; }
 .option small { color: var(--color-muted); font-weight: 600; }
 .option:has(input:checked) { border-color: var(--color-rust); background: #fdf3ef; }
+.option-info {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-line);
+  color: var(--color-ink);
+  font-size: .8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.option-info:hover { background: var(--color-rust); color: #fff; }
 
 .checkbox-line { display: flex; gap: .6rem; align-items: flex-start; margin-bottom: .6rem; font-size: .92rem; }
 .checkbox-line input { margin-top: .25rem; accent-color: var(--color-rust); }
