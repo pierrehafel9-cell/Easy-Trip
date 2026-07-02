@@ -1208,8 +1208,16 @@ p { margin: 0 0 1em; }
   margin: 0 !important;
   min-width: 0;
 }
+.insta-video {
+  height: 568px;
+  width: 320px;
+  object-fit: cover;
+  background: #000;
+  display: block;
+}
 @media (max-width: 720px) {
-  .insta-item { flex: 0 0 280px; }
+  .insta-item { flex: 0 0 260px; }
+  .insta-video { width: 260px; height: 462px; }
 }
 
 /* Bande défilante avis clients */
