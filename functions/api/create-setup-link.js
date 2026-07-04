@@ -27,7 +27,7 @@ export async function onRequestPost({ request, env }) {
       apiVersion: '2024-12-18.acacia',
       httpClient: Stripe.createFetchHttpClient(),
     });
-    const SITE_URL = env.SITE_URL || 'https://easy-trip.pages.dev';
+    const SITE_URL = env.SITE_URL || 'https://easytripfrance.fr';
 
     const customers = await stripe.customers.list({ email, limit: 1 });
     let customer = customers.data[0];

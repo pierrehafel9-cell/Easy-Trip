@@ -3,7 +3,7 @@
 //
 // Configuration Stripe :
 //   Dashboard → Développeurs → Webhooks → Ajouter un endpoint
-//   URL : https://easy-trip.pages.dev/api/stripe-webhook
+//   URL : https://easytripfrance.fr/api/stripe-webhook
 //   Événements : checkout.session.completed, payment_intent.payment_failed, charge.refunded
 //   Récupérer le "Signing secret" (whsec_...) → ajouter dans Cloudflare Pages env vars
 //   sous le nom STRIPE_WEBHOOK_SECRET.
@@ -72,7 +72,7 @@ async function sendConfirmationEmails(session, env) {
   }
   const FROM = env.EMAIL_FROM || 'Easy Trip <onboarding@resend.dev>';
   const ADMIN_EMAIL = env.NOTIFY_EMAIL || 'easytrip.kit@gmail.com';
-  const SITE_URL = env.SITE_URL || 'https://easy-trip.pages.dev';
+  const SITE_URL = env.SITE_URL || 'https://easytripfrance.fr';
 
   // Email client
   if (session.customer_email) {
