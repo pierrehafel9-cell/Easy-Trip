@@ -1265,3 +1265,39 @@ p { margin: 0 0 1em; }
 @media (max-width: 720px) {
   .mobile-fab { display: block; }
 }
+
+/* ── Bande défilante avis ─────────────────────────────────────── */
+.section-reviews-marquee {
+  overflow: hidden;
+  background: var(--color-ink);
+  padding: 1.1rem 0;
+}
+.reviews-marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.reviews-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  animation: reviews-scroll 28s linear infinite;
+  white-space: nowrap;
+}
+.reviews-marquee:hover .reviews-marquee-track { animation-play-state: paused; }
+@keyframes reviews-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.reviews-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .95rem;
+  color: var(--color-cream);
+  font-style: italic;
+  flex-shrink: 0;
+}
+.reviews-stars { color: var(--color-yellow); font-style: normal; letter-spacing: .05em; }
+.reviews-author { font-style: normal; font-weight: 600; color: var(--color-cream); opacity: .7; flex-shrink: 0; }
+.reviews-separator { color: var(--color-rust); font-size: 1.4rem; flex-shrink: 0; }
